@@ -1,0 +1,135 @@
+/* speaking page styles (joanna.html dark-dominant branding) */
+
+.speaker-stats {
+  display: flex; gap: 32px; margin-top: 28px;
+  padding-top: 24px; border-top: 1px solid var(--rule);
+}
+.speaker-stats > div { display: flex; flex-direction: column; gap: 4px; }
+.speaker-stats strong {
+  font-family: var(--display); font-size: 32px;
+  color: var(--accent); font-weight: 400; line-height: 1;
+}
+.speaker-stats span {
+  font-size: 0.68rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-soft);
+}
+
+.reel-frame {
+  margin: 24px 0;
+  position: relative; cursor: pointer;
+  border-radius: 0; overflow: hidden;
+}
+.reel-frame .plate {
+  background-image:
+    repeating-linear-gradient(45deg, transparent 0 14px, rgba(255,255,255,0.03) 14px 15px);
+}
+.reel-frame::after {
+  content: ""; position: absolute; inset: 50% 50% auto auto;
+  transform: translate(50%, -50%);
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--accent);
+  pointer-events: none;
+}
+.reel-frame::before {
+  content: "▶"; position: absolute; inset: 50% 50% auto auto;
+  transform: translate(20%, -50%);
+  font-size: 22px; color: white; z-index: 2;
+  pointer-events: none;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px; margin-top: 32px;
+}
+.event-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(212, 180, 120, 0.15);
+  border-radius: 0; padding: 18px;
+  display: flex; flex-direction: column; gap: 12px;
+  transition: all 0.15s;
+  min-height: 150px;
+}
+.event-card:hover {
+  transform: translateY(-2px); border-color: var(--accent);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+  background: rgba(212, 180, 120, 0.08);
+}
+.event-type {
+  font-size: 0.65rem; letter-spacing: 0.18em; font-weight: 400;
+  text-transform: uppercase; color: var(--accent);
+}
+.event-keynote .event-type { color: var(--accent); }
+.event-tv .event-type { color: #7a9ec7; }
+.event-podcast .event-type { color: #a78bc7; }
+.event-panel .event-type { color: #9a9088; }
+.event-icon {
+  font-family: var(--display); font-size: 26px;
+  color: var(--ink-soft); opacity: 0.6;
+  border-bottom: 1px dashed var(--rule);
+  padding-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+.event-body { display: flex; flex-direction: column; gap: 4px; margin-top: auto; }
+.event-body strong { font-family: var(--display); font-size: 17px; font-weight: 400; line-height: 1.15; color: var(--ivory); }
+.event-body span { font-size: 12px; color: var(--ink-soft); }
+
+.talks-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 22px; margin-top: 32px;
+}
+.talk-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(212, 180, 120, 0.15);
+  border-radius: 0; padding: 28px;
+  display: flex; flex-direction: column; gap: 10px;
+  position: relative;
+}
+.talk-num {
+  position: absolute; top: 20px; right: 22px;
+  font-family: var(--display); font-size: 36px;
+  color: var(--accent); opacity: 0.25; line-height: 1;
+}
+.talk-card h3 { margin: 8px 0 4px; padding-right: 50px; line-height: 1.1; color: var(--ivory); }
+.talk-meta {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 12px 0; margin: 8px 0;
+  border-top: 1px dashed var(--rule);
+  border-bottom: 1px dashed var(--rule);
+  font-size: 13px; line-height: 1.4;
+  color: var(--ink-soft);
+}
+.talk-card p { margin: 0; line-height: 1.5; font-size: 14px; color: rgba(250, 248, 245, 0.75); }
+
+.inquiry-grid {
+  display: grid; grid-template-columns: 1fr 1.1fr;
+  gap: 56px; align-items: start;
+}
+.inquiry-form {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(212, 180, 120, 0.15);
+  border-radius: 0; padding: 28px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.field-select, .field-textarea {
+  font-family: inherit; font-size: 15px;
+  padding: 10px 12px; border: 1px solid rgba(212, 180, 120, 0.15);
+  border-radius: 0; background: rgba(255,255,255,0.04);
+  color: var(--ivory);
+  width: 100%;
+}
+.field-select:focus, .field-textarea:focus {
+  outline: 2px solid var(--accent); outline-offset: -1px;
+}
+.field-textarea { resize: vertical; min-height: 120px; }
+.contact-direct {
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 16px; background: rgba(255,255,255,0.04);
+  border-radius: 0; border: 1px solid rgba(212, 180, 120, 0.15);
+}
+.contact-direct a {
+  color: var(--accent); font-family: var(--display);
+  font-size: 18px; text-decoration: none;
+}
+
+@media (max-width: 960px) {
+  .events-grid { grid-template-columns: 1fr 1fr; }
+  .talks-grid, .inquiry-grid { grid-template-columns: 1fr; }
+}

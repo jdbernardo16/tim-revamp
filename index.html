@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>True Influence Method — with Joanna</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles-base.css" />
+  <link rel="stylesheet" href="styles-comp.css" />
+  <link rel="stylesheet" href="styles-page.css" />
+  <link rel="stylesheet" href="styles-speaking.css" />
+  <link rel="stylesheet" href="styles-journey.css" />
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"
+          integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L"
+          crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"
+          integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm"
+          crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"
+          integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y"
+          crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="shell.jsx"></script>
+  <script type="text/babel" src="home.jsx"></script>
+  <script type="text/babel" src="icp.jsx"></script>
+  <script type="text/babel" src="products.jsx"></script>
+  <script type="text/babel" src="supporting.jsx"></script>
+
+  <script type="text/babel">
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "palette": ["#d4b478", "#0f203d", "#faf8f5", "#e8d4a0"]
+    }/*EDITMODE-END*/;
+
+    // Curated palettes — [accent, ink, paper, accent-soft]
+    const PALETTES = [
+      ["#d4b478", "#0f203d", "#faf8f5", "#e8d4a0"], // BRAND: gold + navy + ivory + gold-pale
+      ["#0f203d", "#0f203d", "#faf8f5", "#e8d4a0"], // navy-led (monochrome)
+      ["#d4b478", "#0f203d", "#0f203d", "#1a3050"], // dark mode: gold on navy
+      ["#8b2a2a", "#1a1612", "#f5efe4", "#ecd8d1"], // burgundy alt
+      ["#1f4f8a", "#11161e", "#f4f6fb", "#dde7f6"], // ink blue
+      ["#1a1612", "#1a1612", "#f5efe4", "#ecd8d1"], // mono ink
+    ];
+
+    const App = () => {
+      const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+      const p = Array.isArray(t.palette) ? t.palette : PALETTES[0];
+      const [route, setRoute] = React.useState({ name: 'home', params: {} });
+
+      // route via custom events from anywhere
+      React.useEffect(() => {
+        const onNav = (e) => {
+          const { route, params } = e.detail || {};
+          setRoute({ name: route || 'home', params: params || {} });
+          // also push to hash for refresh-survival
+          const hash = route ? `#/${route}${params && params.id ? '/' + params.id : ''}` : '';
+          if (window.location.hash !== hash) window.history.replaceState(null, '', hash || ' ');
+        };
+        window.addEventListener('tim:navigate', onNav);
+
+        // initial route from hash
+        const h = window.location.hash.replace(/^#\//, '');
+        if (h) {
+          const [r, id] = h.split('/');
+          setRoute({ name: r, params: id ? { id } : {} });
+        }
+        return () => window.removeEventListener('tim:navigate', onNav);
+      }, []);
+
+      // apply palette
+      React.useEffect(() => {
+        const r = document.documentElement.style;
+        r.setProperty('--accent', p[0]);
+        r.setProperty('--ink',    p[1]);
+        r.setProperty('--paper',  p[2]);
+        r.setProperty('--accent-soft', p[3]);
+      }, [p[0], p[1], p[2], p[3]]);
+
+      // route → page
+      const renderRoute = () => {
+        const { name, params } = route;
+        switch (name) {
+          case 'home':       return <HomePage />;
+          case 'start':      window.requestAnimationFrame(() => {
+                                const el = document.getElementById('start');
+                                if (el) el.scrollIntoView ? el.scrollIntoView({ block: 'start' }) : null;
+                              });
+                              return <HomePage />;
+          case 'speaker':    return <SpeakerPage />;
+          case 'authority':  return <AuthorityPage />;
+          case 'legacy':     return <LegacyPage />;
+          case 'product':    return <ProductDetail id={params.id} />;
+          case 'checkout':   return <CheckoutPage id={params.id} />;
+          case 'about':      return <AboutPage />;
+          case 'journey':    return <JourneyPage />;
+          case 'stories':    return <StoriesPage />;
+          case 'faq':        return <FAQPage />;
+          case 'community':  return <CommunityPage />;
+          case 'corporate':  return <CorporatePage />;
+          case 'speaking':   return <SpeakingPage />;
+          case 'work':       return <AllProgramsPage />;
+          case 'assessment': return <AssessmentPage />;
+          default:           return <NotFound />;
+        }
+      };
+
+      return (
+        <>
+          <Nav route={route.name} />
+          <main key={route.name + '/' + (route.params?.id || '')}>{renderRoute()}</main>
+          <Footer />
+
+          <TweaksPanel title="Tweaks">
+            <TweakSection label="Palette">
+              <TweakColor
+                label="Theme"
+                value={t.palette}
+                options={PALETTES}
+                onChange={(v) => setTweak('palette', v)}
+              />
+              <div style={{ fontSize: 11, opacity: 0.7, marginTop: 4, lineHeight: 1.4 }}>
+                Swaps accent, ink, paper across the whole site.
+              </div>
+            </TweakSection>
+            <TweakSection label="Jump to page">
+              <TweakSelect
+                label="Route"
+                value={route.name}
+                options={['home','speaker','authority','legacy','assessment','about','journey','stories','faq','community','corporate','work']}
+                onChange={(v) => goTo(v)}
+              />
+              <TweakSelect
+                label="Product page"
+                value={route.params?.id || ''}
+                options={['','dollar-message','vault','phase-1','phase-2','phase-3','breakthrough','four-session','phase-4','phase-5']}
+                onChange={(v) => v && goTo('product', { id: v })}
+              />
+              <TweakSelect
+                label="Checkout"
+                value={''}
+                options={['','dollar-message','vault','phase-1','phase-2','phase-3','breakthrough','four-session','phase-4','phase-5']}
+                onChange={(v) => v && goTo('checkout', { id: v })}
+              />
+            </TweakSection>
+          </TweaksPanel>
+        </>
+      );
+    };
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
