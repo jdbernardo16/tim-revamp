@@ -1,0 +1,3 @@
+# Allow API access
+Order allow,deny
+Allow from all

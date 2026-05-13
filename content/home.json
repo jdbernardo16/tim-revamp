@@ -1,0 +1,146 @@
+{
+    "heroEyebrow": "The True Influence Method",
+    "heroTitle": "You're not missing<br/>a <span class=\"u\">message.</span><br/>You're missing <em>trust.</em>",
+    "heroBody": "To gain influence, income, and impact — speaking doesn't cut it. It's time to <strong>lead</strong> with your message: turn your lived experience into a message people trust and follow.",
+    "heroCtaPrimary": "Start with your story →",
+    "heroCtaSecondary": "Free with Joanna · June 5",
+    "heroStars": "★★★★★",
+    "heroMeta1": "300+ leaders guided",
+    "heroMeta2": "Trusted by Fortune 500 execs &amp; founders",
+    "heroImage": "assets/hero-portrait.jpg",
+    "heroQuote": "\"We need the moment of your personal breakthrough that led to your special sauce.\"",
+    "heroQuoteAuthor": "— Joanna",
+    "logoRowLabel": "Trusted by leaders at",
+    "logos": [
+        {
+            "src": "",
+            "alt": "logo 1"
+        },
+        {
+            "src": "",
+            "alt": "logo 2"
+        },
+        {
+            "src": "",
+            "alt": "logo 3"
+        },
+        {
+            "src": "",
+            "alt": "logo 4"
+        },
+        {
+            "src": "",
+            "alt": "logo 5"
+        },
+        {
+            "src": "",
+            "alt": "logo 6"
+        }
+    ],
+    "falseProblemEyebrow": "What you've been telling yourself",
+    "falseProblems": [
+        "\"I don't know what to say.\"",
+        "\"I need a better message.\"",
+        "\"I need more confidence.\""
+    ],
+    "falseProblemOverline": "That feels true. It's not the real problem.",
+    "whatsHappeningEyebrow": "What's actually happening",
+    "whatsHappeningTitle": "You're speaking <em>without</em><br/>connection to your <span class=\"u\">lived truth.</span>",
+    "whatsHappeningBody": "Even when everything sounds right, something is missing.",
+    "whatsHappeningList": [
+        "You have a strong idea, but it doesn't move people.",
+        "You lean on strategy, structure, or performance to carry it.",
+        "You show up — but you don't stand out.",
+        "You're leading, but you're not fully seen for what you do differently."
+    ],
+    "missingPieceEyebrow": "The missing piece",
+    "missingPieceBody": "Most leaders skip the one thing that makes their message undeniable: <strong> the moments that changed them.</strong>",
+    "missingPieceQuote": "We need the moment of your personal breakthrough that led to your special sauce.",
+    "missingPieceQuoteBy": "Joanna",
+    "missingPieceMuted": "This is not about telling a better story. It's about uncovering the moments that <em>created</em> your perspective.",
+    "whyMattersEyebrow": "Why this matters",
+    "whyMattersTitle": "Your message has no weight without inner authority.",
+    "whyMattersBody": "Telling the story behind your solution creates emotional weight, credibility, authority, differentiation — and most importantly, <strong> trust.</strong> People don't follow information. They follow a leader whose real transformation they can feel.",
+    "whatShiftsEyebrow": "What shifts when you find it",
+    "whatShiftsList": [
+        "Your message becomes clear without forcing it.",
+        "Your confidence comes from <em>knowing</em>, not performing.",
+        "Your audience understands you immediately.",
+        "Your voice carries meaning, not just words.",
+        "You stop being convincing — and become trusted."
+    ],
+    "chooseEyebrow": "This is the work",
+    "chooseTitle": "Choose <span class=\"u\">where you are.</span>",
+    "chooseBody": "You don't need more strategy. You need to close the gap between what you know and what you can actually say in the moments that matter.",
+    "chooseMuted": "Are you a <strong>Speaker</strong>, an <strong>Authority</strong>, or a <strong> Legacy</strong>? Find your phase to get what you need.",
+    "notSureText": "Not sure where you are?",
+    "notSureCta": "Take the 5-minute Influence Path Assessment →",
+    "testimonialsEyebrow": "What women say after the work",
+    "closerTitle": "Stop circling your message.<br/><em>Start saying what actually matters.</em>",
+    "closerCtaPrimary": "Choose where you are →",
+    "closerCtaSecondary": "Try $29 first",
+    "icpCards": [
+        {
+            "phase": "ICP 1 · The Speaker",
+            "heading": "Find my<br/>message",
+            "meta1": "Early stage · 3–8 yrs",
+            "meta2": "Revenue $100K – $500K",
+            "body": "You know you have something to say — but you can't clearly say what defines you yet.",
+            "quote": "\"I know what defines me.\"",
+            "arrow": "→ Find my message",
+            "route": "speaker",
+            "featured": false
+        },
+        {
+            "phase": "ICP 2 · The Authority",
+            "heading": "Build my<br/>talk",
+            "meta1": "Established · 10–20 yrs",
+            "meta2": "Revenue $500K – $5M+",
+            "body": "You know your work — but you over-explain it when it matters most. Your message loses energy as you explain it.",
+            "quote": "\"My message lands.\"",
+            "arrow": "→ Build my talk",
+            "route": "authority",
+            "featured": true
+        },
+        {
+            "phase": "ICP 3 · The Legacy",
+            "heading": "Define my<br/>legacy",
+            "meta1": "Advanced · 20+ yrs",
+            "meta2": "Revenue $5M – $25M+",
+            "body": "You've built something significant — but you are not clearly known for what you do <em>differently.</em>",
+            "quote": "\"I'm known for something specific.\"",
+            "arrow": "→ Define my legacy",
+            "route": "legacy",
+            "featured": false
+        }
+    ],
+    "frontDoor": [
+        {
+            "eyebrow": "$29 · Self-paced",
+            "title": "Your Dollar Message",
+            "body": "The fastest way to find the one sentence that sells you. A 60-minute training + worksheet + Joanna's 3-question clarity prompt.",
+            "price": "$29",
+            "cta": "Get it now →",
+            "productId": "dollar-message",
+            "paid": true,
+            "image": "assets/retreat-moment.jpg"
+        },
+        {
+            "eyebrow": "Free · Live with Joanna",
+            "title": "The Vault",
+            "body": "A free live session — June 5 — to feel the work and meet Joanna before you commit. Bring the message you've been trying to land. Q&amp;A and replay included.",
+            "price": "FREE",
+            "cta": "Save my seat →",
+            "productId": "vault",
+            "paid": false,
+            "image": "assets/hero-portrait.jpg"
+        }
+    ],
+    "testimonials": [
+        {
+            "quote": "I finally stopped explaining myself. My message went from \"good idea\" to \"she means it.\" Booked three keynotes in six weeks.",
+            "name": "Maya",
+            "role": "Founder · Tech"
+        }
+    ]
+}

@@ -11,157 +11,7 @@ const goTo = (route, params = {}) => {
 };
 
 // ----- product catalog (single source of truth) -----
-const PRODUCTS = {
-  'dollar-message': {
-    id: 'dollar-message',
-    name: 'Your Dollar Message',
-    tagline: 'A $29 mini-training to find the one sentence that sells you.',
-    price: 29, currency: '$',
-    bullets: [
-      '60-minute self-paced training',
-      'The "Dollar Message" worksheet',
-      'Joanna\'s 3-question clarity prompt',
-      'Lifetime access',
-    ],
-    cta: 'Get it for $29',
-    kind: 'lead-magnet',
-  },
-  'vault': {
-    id: 'vault',
-    name: 'The Vault',
-    tagline: 'A free live session with Joanna — June 5.',
-    price: 0, currency: 'FREE',
-    bullets: [
-      'Live with Joanna · June 5',
-      'Get a feel for the work',
-      'Q&A — bring your message',
-      'Replay sent to attendees',
-    ],
-    cta: 'Save my seat — free',
-    kind: 'free',
-  },
-  'breakthrough': {
-    id: 'breakthrough',
-    name: 'A Breakthrough Session',
-    tagline: 'One session with Joanna to see clearly.',
-    price: 2000,
-    bullets: [
-      'A single private session',
-      'You bring what you\'ve been trying to say',
-      'We find what\'s actually true underneath it',
-      'You leave with: clear direction, a sharper message, the next step',
-    ],
-    cta: 'Book',
-    kind: 'private',
-  },
-  'four-session': {
-    id: 'four-session',
-    name: '4-Session Training Package',
-    tagline: 'For leaders ready to build this with consistency.',
-    price: 8000,
-    bullets: [
-      'Four private sessions with Joanna',
-      'Uncover your defining moment',
-      'Clarify your message — your deeper why',
-      'Build your first leadership message + differentiator',
-    ],
-    cta: 'Book',
-    kind: 'private',
-  },
-  'phase-1': {
-    id: 'phase-1',
-    phase: 'PHASE 1',
-    name: 'Tell Your Story — My Why',
-    tagline: 'The 90-day Mastermind. Includes the retreat.',
-    price: 3200, value: 12000,
-    bullets: [
-      'Your defining moment (written + spoken)',
-      'Your deeper why',
-      'Your first leadership message',
-      'Your unique differentiator',
-      'Live 3–5 minute story share at the retreat',
-      'Peer feedback and refinement',
-    ],
-    leaveWith: '"I know what defines me and why it matters."',
-    cta: 'Join the program',
-    icp: 'speaker',
-    kind: 'program',
-  },
-  'phase-2': {
-    id: 'phase-2',
-    phase: 'PHASE 2',
-    name: 'Move the Room — My Signature Talk',
-    tagline: 'Your story becomes a structured talk that moves people.',
-    price: 12000, value: 20000,
-    bullets: [
-      'A 7-minute signature talk',
-      'A clear problem → solution message',
-      'Emotional connection points + defined CTA',
-      'Live coaching with Joanna',
-      'Retreat speaking opportunity (featured)',
-      'Professional video + photos · social content',
-    ],
-    leaveWith: '"I can clearly communicate a message that lands."',
-    cta: 'Take the stage',
-    icp: 'authority',
-    kind: 'program',
-  },
-  'phase-3': {
-    id: 'phase-3',
-    phase: 'PHASE 3',
-    name: 'Master My Message — Keynote or TEDx',
-    tagline: 'This is where you become known.',
-    price: 25000, value: 40000,
-    bullets: [
-      'A refined, repeatable signature message',
-      'Your thought-leader perspective',
-      'Your "special sauce" (what you do differently)',
-      'A one-liner people can repeat',
-      'Speaker cohort training + private sessions',
-      'Full speaking reel + 1-minute social clip',
-    ],
-    leaveWith: '"I am known for something specific and valuable."',
-    cta: 'Create my keynote',
-    icp: 'authority',
-    kind: 'program',
-  },
-  'phase-4': {
-    id: 'phase-4',
-    phase: 'PHASE 4',
-    name: 'Build My Team — My Scaling Strategy',
-    tagline: 'Your message becomes a system.',
-    price: 250000, priceLabel: 'Starts at $250,000',
-    bullets: [
-      'Your leadership framework',
-      'A team communication system',
-      'A mentorship structure based on your message',
-      'Psychological safety + trust inside your team',
-      'A business strategy to scale',
-    ],
-    leaveWith: '"I build leaders, not just results."',
-    cta: 'Scale my business',
-    icp: 'legacy',
-    kind: 'program',
-  },
-  'phase-5': {
-    id: 'phase-5',
-    phase: 'PHASE 5',
-    name: 'Be Remembered — My Legacy Framework',
-    tagline: 'Your work outlives you.',
-    price: 1000000, priceLabel: 'Starts at $1M',
-    bullets: [
-      'Your legacy blueprint',
-      'Your impact thesis',
-      'Your succession plan',
-      'Voice + wealth + long-term contribution, aligned',
-      'A body of work that defines your legacy',
-    ],
-    leaveWith: '"My life\'s work carries beyond me."',
-    cta: 'Craft my legacy',
-    icp: 'legacy',
-    kind: 'program',
-  },
-};
+const PRODUCTS = window.PRODUCTS || {};
 
 const fmt = (n) => '$' + n.toLocaleString('en-US');
 const priceOf = (p) => p.priceLabel ? p.priceLabel : (p.price === 0 ? 'Free' : fmt(p.price));
@@ -180,35 +30,15 @@ const Nav = ({ route }) => {
     return () => document.removeEventListener('click', onClickAway);
   }, []);
 
-  const menus = [
-    { id: 'about', label: 'About', items: [
-      { label: 'About Joanna', route: 'about' },
-      { label: 'The Journey', route: 'journey' },
-    ]},
-    { id: 'work', label: 'Work With Me', items: [
-      { label: 'All Programs', route: 'work' },
-      { label: 'Tell Your Story (Phase 1)', route: 'product', params: { id: 'phase-1' } },
-      { label: 'Signature Talk (Phase 2)', route: 'product', params: { id: 'phase-2' } },
-      { label: 'Keynote · TEDx (Phase 3)', route: 'product', params: { id: 'phase-3' } },
-      { label: 'Private Training', route: 'legacy' },
-      { label: 'Corporate', route: 'corporate' },
-      { label: '— Book Joanna to speak', route: 'speaking' },
-    ]},
-    { id: 'stories', label: 'Success Stories', route: 'stories' },
-    { id: 'community', label: 'Community', items: [
-      { label: 'The Vault (Free · June 5)', route: 'product', params: { id: 'vault' } },
-      { label: 'Monthly Gathering', route: 'community' },
-      { label: 'Events', route: 'community' },
-    ]},
-    { id: 'faq', label: 'FAQ', route: 'faq' },
-  ];
+  const G = window.GLOBAL || {};
+  const menus = G.navMenus || [];
 
   return (
     <header className="nav" ref={navRef}>
       <div className="nav-inner">
         <a className="brand" onClick={() => goTo('home')}>
           <img className="brand-logo" src="assets/logo-transparent.png" alt="True Influence Method" />
-          <span className="brand-name">True Influence Method</span>
+          <span className="brand-name">{(window.GLOBAL && window.GLOBAL.siteName) || 'True Influence Method'}</span>
         </a>
         <nav className="nav-items">
           {menus.map((m) => (
@@ -251,42 +81,35 @@ const Nav = ({ route }) => {
   );
 };
 
-const Footer = () => (
+const Footer = () => {
+  const G = window.GLOBAL || {};
+  const cols = G.footerCols || [];
+  return (
   <footer className="footer">
     <div className="footer-inner">
       <div className="footer-brand">
-        <img className="footer-logo" src="assets/logo-transparent.png" alt="True Influence Method" />
+        <img className="footer-logo" src="assets/logo-transparent.png" alt={G.siteName || 'True Influence Method'} />
         <div className="footer-sig">— with Joanna</div>
       </div>
       <div className="footer-cols">
-        <div>
-          <div className="footer-h">Start</div>
-          <a onClick={() => goTo('start')}>Find your path</a>
-          <a onClick={() => goTo('product', { id: 'dollar-message' })}>Your Dollar Message · $29</a>
-          <a onClick={() => goTo('product', { id: 'vault' })}>The Vault · Free June 5</a>
-        </div>
-        <div>
-          <div className="footer-h">Work with me</div>
-          <a onClick={() => goTo('speaker')}>The Speaker</a>
-          <a onClick={() => goTo('authority')}>The Authority</a>
-          <a onClick={() => goTo('legacy')}>The Legacy</a>
-        </div>
-        <div>
-          <div className="footer-h">More</div>
-          <a onClick={() => goTo('speaking')}>Book Joanna to speak</a>
-          <a onClick={() => goTo('about')}>About Joanna</a>
-          <a onClick={() => goTo('stories')}>Success Stories</a>
-          <a onClick={() => goTo('faq')}>FAQ</a>
-        </div>
+        {cols.map((col, i) => (
+          <div key={i}>
+            <div className="footer-h">{col.heading}</div>
+            {(col.links || []).map((link, j) => (
+              <a key={j} onClick={() => goTo(link.route, link.params)}>{link.label}</a>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
     <div className="footer-base">
-      <span>© 2026 True Influence Method</span>
-      <span>hello@trueinfluencemethod.com</span>
-      <span>Instagram · LinkedIn</span>
+      <span>&copy; {G.year || 2026} {G.siteName || 'True Influence Method'}</span>
+      <span>{G.email || 'hello@trueinfluencemethod.com'}</span>
+      <span>Instagram &middot; LinkedIn</span>
     </div>
   </footer>
-);
+  );
+};
 
 // ----- primitives -----
 

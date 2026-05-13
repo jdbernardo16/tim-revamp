@@ -1,0 +1,138 @@
+{
+  "speaker": {
+    "breadcrumb": "The Speaker (1A)",
+    "tag": "1 \u00b7 The Speaker",
+    "heading": "Find your <span class=\"u\">message.</span>",
+    "who": "Early-stage leader \u00b7 3\u20138 years building or leading",
+    "revenue": "$100K \u2013 $500K",
+    "body": "You know you have something to say — but you can't clearly say what defines you yet.",
+    "diagnosticTitle": "When someone asks what you do, you notice\u2026",
+    "diagnosticLead": "You don't lack confidence. You lack clarity on what actually defines you.",
+    "diagnosticObservations": [
+      "You start explaining instead of answering.",
+      "You change how you say it depending on the person.",
+      "You're not sure what part of your story actually matters.",
+      "You've lived through things that shaped you — but you haven't identified the moment that explains your leadership."
+    ],
+    "lackTitle": "\u2026confidence",
+    "lackItems": [
+      "No defining moment yet",
+      "No clear \"why\"",
+      "No message you can say in one sentence"
+    ],
+    "needItems": [
+      "Know what shaped you and why it matters",
+      "Stop guessing how to explain yourself",
+      "Have a message you can say clearly"
+    ],
+    "getItems": [
+      "A safe space to say your story for the first time",
+      "A live 3\u20135 minute story share",
+      "Clarity of identity and your \"why\""
+    ],
+    "sentence": "I know what defines me and why it matters.",
+    "pathEyebrow": "Your path",
+    "pathHeading": "Start here.",
+    "pathBody": "The Mastermind that gives you your message. Add private support if you want it faster.",
+    "recommendedProduct": "phase-1",
+    "addOnEyebrow": "Want to go further?",
+    "addOns": [
+      {
+        "heading": "Featured Speaker Spot",
+        "body": "Take the retreat stage with a live talk and a real audience. Included with Phase 2, available as add-on here.",
+        "buttonLabel": "See Phase 2 \u2192",
+        "buttonRoute": "product",
+        "buttonParams": { "id": "phase-2" }
+      },
+      {
+        "heading": "Breakthrough Session",
+        "body": "One private session with Joanna to go below the surface \u2014 to what is actually true.",
+        "price": "$2,000",
+        "buttonLabel": "Add \u2192",
+        "buttonRoute": "checkout",
+        "buttonParams": { "id": "breakthrough" }
+      }
+    ]
+  },
+  "authority": {
+    "breadcrumb": "The Authority (2A)",
+    "tag": "2 \u00b7 The Authority",
+    "heading": "Build your <span class=\"u\">talk.</span>",
+    "who": "Established leader \u00b7 10\u201320 years leading or operating at scale",
+    "revenue": "$500K \u2013 $5M+",
+    "body": "You know your work — but you over-explain it when it matters.",
+    "diagnosticTitle": "You walk away thinking, <em>\"That's not what I meant to say.\"</em>",
+    "diagnosticLead": "You don't lack experience. You haven't structured your message to move people.",
+    "diagnosticObservations": [
+      "You ramble instead of landing your point.",
+      "You give too much context before saying anything clear.",
+      "Your message loses energy as you explain it."
+    ],
+    "lackTitle": "\u2026experience",
+    "lackItems": [
+      "No structured message",
+      "Emotional connection missing",
+      "Audience nods but doesn't move"
+    ],
+    "needItems": [
+      "Say it once and have it land",
+      "Connect emotionally \u2014 not just intellectually",
+      "Move people to action"
+    ],
+    "getItems": [
+      "A structured message that lands",
+      "Peer feedback + refinement",
+      "A signature talk aligned to your work"
+    ],
+    "sentence": "I can clearly communicate a message that lands.",
+    "pathEyebrow": "Your path",
+    "pathHeading": "Two ways forward.",
+    "pathBody": "Build the structured talk that lands, or go all the way to keynote / TEDx.",
+    "recommendedProducts": ["phase-2", "phase-3"],
+    "privateEyebrow": "Want to work privately?",
+    "privateHeading": "Work 1:1 with Joanna.",
+    "privateProducts": ["breakthrough", "four-session"]
+  },
+  "legacy": {
+    "breadcrumb": "The Legacy (3A)",
+    "tag": "3 \u00b7 The Legacy",
+    "heading": "Define your <span class=\"u\">legacy.</span>",
+    "who": "Advanced leader \u00b7 20+ years of leadership, ownership, or senior-level work",
+    "revenue": "$5M \u2013 $25M+ (or equivalent scale of impact)",
+    "body": "You've built something significant — but you are not clearly known for what you do differently.",
+    "diagnosticTitle": "You are respected. You are not <em>distinct.</em>",
+    "diagnosticLead": "You don't lack success. You haven't fully claimed your differentiator.",
+    "diagnosticObservations": [
+      "Your message sounds similar to others in your space.",
+      "People don't repeat what you say about you.",
+      "Your work is strong — but your positioning is not sharp."
+    ],
+    "lackTitle": "\u2026success",
+    "lackItems": [
+      "Unclear key differentiator",
+      "No repeatable message",
+      "No defined point of view people can attach to"
+    ],
+    "needItems": [
+      "Be known for your contribution",
+      "Clearly communicate what you do differently",
+      "Have a blueprint people can build on after you're gone"
+    ],
+    "getItems": [
+      "A leadership framework that scales beyond you",
+      "A \"special sauce\" the market repeats",
+      "A legacy designed \u2014 not left to chance"
+    ],
+    "sentence": "My life's work carries beyond me.",
+    "pathEyebrow": "Your path \u00b7 private",
+    "pathHeading": "By invitation.",
+    "pathBody": "Two phases for leaders building systems that outlive them.",
+    "recommendedProducts": ["phase-4", "phase-5"],
+    "inviteEyebrow": "How this works",
+    "inviteHeading": "Private training begins with a conversation.",
+    "inviteBody": "Submit a request and Joanna will reach out within 48 hours. All Legacy engagements are bespoke.",
+    "inviteCta": "Request a conversation \u2192",
+    "inviteRoute": "checkout",
+    "inviteParams": { "id": "phase-4" }
+  }
+}

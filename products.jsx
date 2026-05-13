@@ -1,133 +1,13 @@
-// products.jsx — Product detail + Checkout pages, plus the lead-magnet
-// pages (Vault free June 5, Your Dollar Message $29) and a tiny
-// Influence Path Assessment.
+// products.jsx — Product detail + Checkout pages. Content from CMS.
+const html = (s) => ({ __html: s || '' });
 
 const ProductDetail = ({ id }) => {
   const p = PRODUCTS[id];
   if (!p) return <NotFound />;
 
-  const longCopyById = {
-    'phase-1': {
-      youBuild: [
-        'Your defining moment (written + spoken)',
-        'Your deeper why (clear, concise statement)',
-        'Your first leadership message (1–2 sentences)',
-        'Your unique differentiator',
-      ],
-      youExperience: [
-        'A safe space to say your story for the first time',
-        'Peer feedback and refinement',
-        'A live 3–5 minute story share',
-      ],
-      youLeaveWith: [
-        'Clarity of identity and voice',
-        'A message ready for public use',
-        '"I know what defines me and why it matters."',
-      ],
-    },
-    'phase-2': {
-      youBuild: [
-        'A 7-minute signature talk',
-        'A clear problem → solution message',
-        'Emotional connection points',
-        'A defined call to action',
-      ],
-      youExperience: [
-        'Live coaching with Joanna',
-        'Retreat speaking opportunity (featured)',
-        'Real-time feedback and refinement',
-      ],
-      youLeaveWith: [
-        'A talk that lands',
-        'A message that moves people to action',
-        '"I can clearly communicate a message that lands."',
-      ],
-    },
-    'phase-3': {
-      youBuild: [
-        'A refined, repeatable signature message',
-        'Your thought-leader perspective',
-        'Your "special sauce" — what you do differently',
-        'A one-liner people can repeat',
-      ],
-      youExperience: [
-        'Speaker cohort training + private sessions',
-        'Full speaking reel + 1-minute social clip',
-        'Professional video + photos',
-      ],
-      youLeaveWith: [
-        'A keynote-level talk',
-        'A message people remember and repeat',
-        '"I am known for something specific and valuable."',
-      ],
-    },
-    'phase-4': {
-      youBuild: [
-        'Your leadership framework',
-        'A team communication system',
-        'A mentorship structure based on your message',
-      ],
-      youExperience: [
-        'Psychological safety and trust inside your team',
-        'A repeatable system others can lead through',
-        'A business strategy to scale',
-      ],
-      youLeaveWith: [
-        'A healed leadership model that drives performance',
-        'A team that operates from your vision',
-        '"I build leaders, not just results."',
-      ],
-    },
-    'phase-5': {
-      youBuild: [
-        'Your legacy blueprint',
-        'Your impact thesis',
-        'Your succession plan',
-      ],
-      youExperience: [
-        'Voice + wealth + long-term contribution, aligned',
-        'A message with generational impact',
-        'A structure that continues beyond your lifetime',
-      ],
-      youLeaveWith: [
-        'A clear plan for your long-term influence',
-        'A legacy that is designed, not left to chance',
-        '"My life\'s work carries beyond me."',
-      ],
-    },
-    'breakthrough': {
-      youBuild: [
-        'Clear direction on your message',
-        'A sharper articulation of what you do',
-        'Immediate clarity on your next step',
-      ],
-      youExperience: [
-        'The shift from explaining → knowing',
-        "What your voice sounds like when it's aligned",
-      ],
-      youLeaveWith: [
-        'A clear next step you actually trust',
-      ],
-    },
-    'four-session': {
-      youBuild: [
-        'Your defining moment (the moment that shaped your work)',
-        'Your deeper why',
-        'Your first leadership message',
-        'Your unique differentiator',
-      ],
-      youExperience: [
-        'Four private sessions with Joanna',
-        'Direct feedback as your message is built',
-      ],
-      youLeaveWith: [
-        'A message you can actually say out loud',
-        'Clarity on what defines you and why it matters',
-      ],
-    },
-  };
-
-  const detail = longCopyById[id] || {};
+  const longCopy = window.PRODUCT_DETAILS || {};
+  const detail = longCopy[id] || {};
+  const sidebarImg = longCopy.sidebarImage || 'assets/retreat-moment.jpg';
 
   return (
     <>
@@ -165,7 +45,7 @@ const ProductDetail = ({ id }) => {
             </div>
 
             <aside className="prod-buy">
-              <Plate label="retreat moment" h={220} src="assets/retreat-moment.jpg" />
+              <Plate label="retreat moment" h={220} src={sidebarImg} />
               <div className="prod-buy-inner">
                 <div className="prod-buy-price">
                   <span className="big">{priceOf(p)}</span>
@@ -196,7 +76,6 @@ const ProductDetail = ({ id }) => {
         </Section>
       )}
 
-      {/* RELATED */}
       <Section tone="cream">
         <Container>
           <Eyebrow style={{ textAlign: 'center' }}>You may also need</Eyebrow>
@@ -218,13 +97,14 @@ const ProductDetail = ({ id }) => {
   );
 };
 
-// ── CHECKOUT ──────────────────────────────────────────────────────────────
 const CheckoutPage = ({ id }) => {
   const p = PRODUCTS[id];
   const [form, setForm] = React.useState({});
   const [paymentMethod, setPaymentMethod] = React.useState('card');
   const [plan, setPlan] = React.useState('full');
   const [confirmed, setConfirmed] = React.useState(false);
+
+  const C = window.CHECKOUT || {};
 
   if (!p) return <NotFound />;
 
@@ -238,16 +118,13 @@ const CheckoutPage = ({ id }) => {
     return (
       <Section tone="paper">
         <Container narrow style={{ textAlign: 'center' }}>
-          <Eyebrow>You're in</Eyebrow>
-          <h1 className="display">Welcome — your seat is held.</h1>
-          <p className="lead">
-            A confirmation is on its way to <strong>{form.email || 'your inbox'}</strong>.
-            Joanna will follow up personally within 24 hours with onboarding details.
-          </p>
-          <Plate label="welcome moment" h={260} src="assets/story-placeholder.jpg" style={{ margin: '24px 0' }} />
+          <Eyebrow>{C.confirmedEyebrow}</Eyebrow>
+          <h1 className="display">{C.confirmedTitle}</h1>
+          <p className="lead" dangerouslySetInnerHTML={html(C.confirmedBody ? C.confirmedBody.replace('{{email}}', form.email || 'your inbox') : '')} />
+          <Plate label="welcome moment" h={260} src={C.confirmedImage || 'assets/story-placeholder.jpg'} style={{ margin: '24px 0' }} />
           <div className="cta-row centered">
-            <Button primary size="lg" onClick={() => goTo('home')}>Back to home</Button>
-            <Button ghost size="lg" onClick={() => goTo('product', { id: 'vault' })}>Add the free Vault session</Button>
+            <Button primary size="lg" onClick={() => goTo('home')}>{C.confirmedCtaPrimary || 'Back to home'}</Button>
+            <Button ghost size="lg" onClick={() => goTo('product', { id: 'vault' })}>{C.confirmedCtaSecondary || 'Add the free Vault session'}</Button>
           </div>
         </Container>
       </Section>
@@ -264,23 +141,22 @@ const CheckoutPage = ({ id }) => {
         </div>
 
         <div className="checkout-grid">
-          {/* LEFT — form */}
           <form className="checkout-form" onSubmit={(e) => { e.preventDefault(); setConfirmed(true); }}>
-            <h1 className="display sm">Welcome in. Let's make it real.</h1>
+            <h1 className="display sm">{C.formTitle || "Welcome in. Let's make it real."}</h1>
 
             <fieldset>
               <legend>Your details</legend>
-              <Field label="Full name" placeholder="Joanna Surname"
+              <Field label={C.fieldName || 'Full name'} placeholder={C.fieldNamePlaceholder || 'Joanna Surname'}
                 value={form.name} onChange={(v) => setForm({ ...form, name: v })} />
-              <Field label="Email" type="email" placeholder="you@email.com"
+              <Field label={C.fieldEmail || 'Email'} type="email" placeholder={C.fieldEmailPlaceholder || 'you@email.com'}
                 value={form.email} onChange={(v) => setForm({ ...form, email: v })} />
-              <Field label="Phone (optional)" placeholder="+1 555 0100"
+              <Field label={C.fieldPhone || 'Phone (optional)'} placeholder={C.fieldPhonePlaceholder || '+1 555 0100'}
                 value={form.phone} onChange={(v) => setForm({ ...form, phone: v })} />
             </fieldset>
 
             {planOptions && (
               <fieldset>
-                <legend>Payment plan</legend>
+                <legend>{C.paymentPlansLabel || 'Payment plan'}</legend>
                 <div className="plan-row">
                   {planOptions.map(o => (
                     <label key={o.id} className={"plan-opt" + (plan === o.id ? ' selected' : '')}>
@@ -295,7 +171,7 @@ const CheckoutPage = ({ id }) => {
             )}
 
             <fieldset>
-              <legend>Payment method</legend>
+              <legend>{C.paymentMethodLabel || 'Payment method'}</legend>
               <div className="paymeth-row">
                 {[
                   { id: 'card', label: 'Card' },
@@ -312,21 +188,21 @@ const CheckoutPage = ({ id }) => {
 
               {paymentMethod === 'card' && (
                 <>
-                  <Field label="Card number" placeholder="1234 1234 1234 1234"
+                  <Field label={C.fieldCard || 'Card number'} placeholder={C.fieldCardPlaceholder || '1234 1234 1234 1234'}
                     value={form.card} onChange={(v) => setForm({ ...form, card: v })} />
                   <div className="row-2">
-                    <Field label="Expiry" placeholder="MM / YY"
+                    <Field label={C.fieldExpiry || 'Expiry'} placeholder={C.fieldExpiryPlaceholder || 'MM / YY'}
                       value={form.exp} onChange={(v) => setForm({ ...form, exp: v })} />
-                    <Field label="CVC" placeholder="123"
+                    <Field label={C.fieldCvc || 'CVC'} placeholder={C.fieldCvcPlaceholder || '123'}
                       value={form.cvc} onChange={(v) => setForm({ ...form, cvc: v })} />
                   </div>
                 </>
               )}
               {paymentMethod === 'apple' && (
-                <div className="apple-pay-block">Press the Apple Pay button to continue securely.</div>
+                <div className="apple-pay-block">{C.applePayBlock || 'Press the Apple Pay button to continue securely.'}</div>
               )}
               {paymentMethod === 'wire' && (
-                <div className="apple-pay-block">We'll send wire instructions to your email after submit. Common for Legacy engagements.</div>
+                <div className="apple-pay-block">{C.wireBlock || "We'll send wire instructions to your email after submit. Common for Legacy engagements."}</div>
               )}
             </fieldset>
 
@@ -334,13 +210,12 @@ const CheckoutPage = ({ id }) => {
               Confirm &amp; pay {priceOf(p)} →
             </Button>
             <p className="muted small" style={{ marginTop: 10 }}>
-              🔒 Secure · 14-day refund · By submitting you agree to the terms.
+              {C.secureNote || '🔒 Secure · 14-day refund · By submitting you agree to the terms.'}
             </p>
           </form>
 
-          {/* RIGHT — summary */}
           <aside className="order-summary">
-            <Eyebrow>Order summary</Eyebrow>
+            <Eyebrow>{C.orderSummaryLabel || 'Order summary'}</Eyebrow>
             {p.phase && <div className="os-phase">{p.phase}</div>}
             <div className="display sm">{p.name}</div>
             <p className="os-tag">{p.tagline}</p>
@@ -350,9 +225,9 @@ const CheckoutPage = ({ id }) => {
             </ul>
             <Hairline />
             <div className="os-totals">
-              <div className="os-row"><span>Subtotal</span><span>{priceOf(p)}</span></div>
-              {p.value && <div className="os-row muted"><span>Value</span><span>${p.value.toLocaleString()}</span></div>}
-              <div className="os-row big"><span>Today</span>
+              <div className="os-row"><span>{C.subtotalLabel || 'Subtotal'}</span><span>{priceOf(p)}</span></div>
+              {p.value && <div className="os-row muted"><span>{C.valueLabel || 'Value'}</span><span>${p.value.toLocaleString()}</span></div>}
+              <div className="os-row big"><span>{C.todayLabel || 'Today'}</span>
                 <span>
                   {planOptions && plan === 'three' ? '$' + Math.ceil(p.price / 3).toLocaleString() :
                    planOptions && plan === 'six' ? '$' + Math.ceil(p.price / 6).toLocaleString() :
@@ -361,9 +236,9 @@ const CheckoutPage = ({ id }) => {
               </div>
             </div>
             <div className="os-note">
-              {p.id === 'phase-1' && <>Includes the in-person retreat + lifetime community.</>}
-              {p.id === 'vault' && <>Free. Add to cart, no card required.</>}
-              {p.id === 'dollar-message' && <>Instant access on confirmation.</>}
+              {p.id === 'phase-1' && <>{C.phase1Note || 'Includes the in-person retreat + lifetime community.'}</>}
+              {p.id === 'vault' && <>{C.vaultNote || 'Free. Add to cart, no card required.'}</>}
+              {p.id === 'dollar-message' && <>{C.dollarMessageNote || 'Instant access on confirmation.'}</>}
             </div>
           </aside>
         </div>
@@ -372,65 +247,70 @@ const CheckoutPage = ({ id }) => {
   );
 };
 
-// ── THE VAULT — free June 5 ───────────────────────────────────────────────
-const VaultPage = () => (
-  <>
-    <Section tone="paper">
-      <Container>
-        <div className="vault-grid">
-          <div>
-            <Pill tone="accent">FREE · live with Joanna</Pill>
-            <h1 className="display">The <Underline>Vault.</Underline></h1>
-            <div className="vault-when">
-              <div><span className="meta-k">DATE</span>Thursday, June 5</div>
-              <div><span className="meta-k">TIME</span>12:00pm PT · 60 minutes</div>
-              <div><span className="meta-k">WHERE</span>Live on Zoom · replay included</div>
+const VaultPage = () => {
+  const H = window.HOME || {};
+  const frontDoor = (H.frontDoor || [])[1] || {};
+  return (
+    <>
+      <Section tone="paper">
+        <Container>
+          <div className="vault-grid">
+            <div>
+              <Pill tone="accent">{frontDoor.eyebrow}</Pill>
+              <h1 className="display">The <span className="u">Vault.</span></h1>
+              <div className="vault-when">
+                <div><span className="meta-k">DATE</span>Thursday, June 5</div>
+                <div><span className="meta-k">TIME</span>12:00pm PT · 60 minutes</div>
+                <div><span className="meta-k">WHERE</span>Live on Zoom · replay included</div>
+              </div>
+              <p className="lead">
+                An open hour with Joanna to feel the work before you commit.
+                Get a window into the course, ask anything, and watch a live
+                story-share. No upsell during the room — just the work.
+              </p>
+              <ul className="check-list">
+                <li>See exactly what happens inside <strong>Tell Your Story</strong></li>
+                <li>Hear a live 3–5 minute story share — see how it lands</li>
+                <li>Live Q&amp;A with Joanna</li>
+                <li>Replay sent to everyone who registers</li>
+              </ul>
+              <div className="cta-row">
+                <Button primary size="lg" onClick={() => goTo('checkout', { id: 'vault' })}>
+                  Save my seat — free →
+                </Button>
+                <Button ghost size="lg" onClick={() => goTo('product', { id: 'phase-1' })}>
+                  Or skip — go to Phase 1
+                </Button>
+              </div>
             </div>
-            <p className="lead">
-              An open hour with Joanna to feel the work before you commit.
-              Get a window into the course, ask anything, and watch a live
-              story-share. No upsell during the room — just the work.
-            </p>
-            <ul className="check-list">
-              <li>See exactly what happens inside <strong>Tell Your Story</strong></li>
-              <li>Hear a live 3–5 minute story share — see how it lands</li>
-              <li>Live Q&amp;A with Joanna</li>
-              <li>Replay sent to everyone who registers</li>
-            </ul>
-            <div className="cta-row">
-              <Button primary size="lg" onClick={() => goTo('checkout', { id: 'vault' })}>
-                Save my seat — free →
-              </Button>
-              <Button ghost size="lg" onClick={() => goTo('product', { id: 'phase-1' })}>
-                Or skip — go to Phase 1
-              </Button>
-            </div>
+            <Plate label="Joanna · live" h={460} src={frontDoor.image || 'assets/hero-portrait.jpg'} />
           </div>
-          <Plate label="Joanna · live" h={460} src="assets/hero-portrait.jpg" />
-        </div>
-      </Container>
-    </Section>
+        </Container>
+      </Section>
 
-    <Section tone="cream">
-      <Container narrow style={{ textAlign: 'center' }}>
-        <Eyebrow>What women say after the Vault</Eyebrow>
-        <Quote by="Maya · Founder">
-          I came expecting a sales pitch. I left with a sentence I still use about my company.
-        </Quote>
-      </Container>
-    </Section>
-  </>
-);
+      <Section tone="cream">
+        <Container narrow style={{ textAlign: 'center' }}>
+          <Eyebrow>What women say after the Vault</Eyebrow>
+          <Quote by="Maya · Founder">
+            I came expecting a sales pitch. I left with a sentence I still use about my company.
+          </Quote>
+        </Container>
+      </Section>
+    </>
+  );
+};
 
-// ── YOUR DOLLAR MESSAGE — $29 ────────────────────────────────────────────
-const DollarMessagePage = () => (
-  <>
+const DollarMessagePage = () => {
+  const H = window.HOME || {};
+  const fd = (H.frontDoor || [])[0] || {};
+  return (
+    <>
     <Section tone="paper">
       <Container>
         <div className="vault-grid">
           <div>
             <Pill>$29 · Self-paced</Pill>
-            <h1 className="display">Your Dollar <Underline>Message.</Underline></h1>
+            <h1 className="display">Your Dollar <span className="u">Message.</span></h1>
             <p className="lead">
               The fastest way to find the one sentence that actually sells you —
               the message you can repeat in 30 seconds and have people
@@ -462,7 +342,7 @@ const DollarMessagePage = () => (
               </Button>
             </div>
           </div>
-          <Plate label="training thumbnail" h={460} src="assets/retreat-moment.jpg" />
+          <Plate label="training thumbnail" h={460} src={fd.image || 'assets/retreat-moment.jpg'} />
         </div>
       </Container>
     </Section>
@@ -477,9 +357,9 @@ const DollarMessagePage = () => (
       </Container>
     </Section>
   </>
-);
+  );
+};
 
-// ── INFLUENCE PATH ASSESSMENT — small quiz ──────────────────────────────
 const AssessmentPage = () => {
   const [step, setStep] = React.useState(0);
   const [answers, setAnswers] = React.useState([]);
@@ -555,7 +435,6 @@ const AssessmentPage = () => {
   );
 };
 
-// ── 404 / Not Found ─────────────────────────────────────────────────────
 const NotFound = () => (
   <Section tone="paper">
     <Container narrow style={{ textAlign: 'center' }}>

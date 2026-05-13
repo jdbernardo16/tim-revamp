@@ -65,6 +65,67 @@ The project includes a client-side design iteration tool:
 
 Open `index.html` directly in a browser. No server, build step, or dependencies needed. The site loads React, Babel, and all JSX files from CDN and local disk.
 
+## Custom PHP CMS
+
+The project now includes a **flat-file PHP CMS** running alongside the React frontend.
+
+### Architecture
+
+```
+Browser ──→ index.html → content-loader.js ──→ api/content.php ←─→ content/*.json
+                  ↓                                      ↑
+              React SPA                          admin/*.php (editors)
+```
+
+### How It Works
+
+- All hardcoded content from JSX files is extracted into `content/*.json` files
+- A PHP API (`api/content.php?type=all`) serves the content
+- `content-loader.js` fetches it on page load and sets `window.CONTENT`, `window.PRODUCTS`, etc.
+- JSX components reference `window.PRODUCTS`, `window.HOME`, `window.ICP`, etc.
+- The `<Underline>` JSX component is replaced by a CSS `.u` class (same visual)
+- When the API is unavailable, components gracefully degrade (empty states)
+
+### Admin Panel
+
+| Path | Purpose |
+|------|---------|
+| `/admin/` | Login (default password: `admin123`, change immediately) |
+| `/admin/dashboard.php` | Content manager index |
+| `/admin/edit-products.php` | Edit product catalog (names, prices, bullets, CTAs) |
+| `/admin/edit-home.php` | Edit homepage (all sections, testimonials, ICP cards) |
+| `/admin/edit-pages.php` | Edit About, Journey, Stories, FAQ, Community, Corporate |
+| `/admin/edit-speaking.php` | Edit Speaking page (talks, events, inquiry) |
+| `/admin/edit-global.php` | Edit nav menus, footer, site settings |
+| `/admin/edit-password.php` | Change admin password |
+
+### Content Files
+
+| File | What it controls |
+|------|-----------------|
+| `content/products.json` | 10 products with prices, bullets, tags |
+| `content/home.json` | Homepage hero, sections, ICP cards, testimonials |
+| `content/product-details.json` | Per-product "You build/experience/leave with" copy |
+| `content/icp.json` | Speaker, Authority, Legacy pages |
+| `content/pages.json` | About, Journey, Stories, FAQ, Community, Corporate |
+| `content/speaking.json` | Booking page, reel, events, talks, inquiry form |
+| `content/global.json` | Nav menus, footer columns, site name, email |
+| `content/checkout.json` | Checkout page copy |
+
+### Deployment Requirements
+
+- **PHP 8+** (Hostinger supports this natively)
+- Upload everything via FTP — no database, no build step
+- Change the default password at `/admin/edit-password.php` after first login
+- The `content/` directory must be writable by PHP to save edits
+
+### Editing Flow
+
+1. Visit `/admin/` → log in
+2. Select content area to edit
+3. Save → file written to `content/*.json`
+4. Refresh the frontend → changes reflected immediately
+
 ## Notes
 
 - This is a **prototype / design-stage** project — evidenced by the `tweaks-panel.jsx`, `design-canvas.jsx`, `wireframes.jsx`, and screenshot directories
