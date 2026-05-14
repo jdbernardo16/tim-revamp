@@ -131,5 +131,5 @@ uid=1_0 RootWebArea "True Influence Method — with Joanna" url="http://localhos
     uid=1_122 StaticText "2026"
     uid=1_123 StaticText " "
     uid=1_124 StaticText "True Influence Method"
-    uid=1_125 StaticText "hello@trueinfluencemethod.com"
+    uid=1_125 StaticText "info@trueinfluencemethod.com"
     uid=1_126 StaticText "Instagram · LinkedIn"

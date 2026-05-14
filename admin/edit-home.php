@@ -77,10 +77,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }, $d['icpCards']);
 
     // Enrich with auto-route + featured defaults
+    $routeMap = ['the speaker' => 'speaker', 'the authority' => 'authority', 'the legacy' => 'legacy'];
     foreach ($icpCards as $i => $card) {
       if (empty($card['route'])) {
-        $slug = strtolower(trim(preg_replace('/[^a-zA-Z0-9]/', '-', $card['phase'])));
-        $icpCards[$i]['route'] = $slug ?: "card-$i";
+        $key = strtolower(trim($card['phase']));
+        $icpCards[$i]['route'] = $routeMap[$key] ?? "card-$i";
       }
       if (count($icpCards) >= 3) {
         $icpCards[$i]['featured'] = ($i === 1);

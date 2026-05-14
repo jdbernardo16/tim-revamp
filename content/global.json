@@ -1,6 +1,6 @@
 {
     "siteName": "True Influence Method",
-    "email": "hello@trueinfluencemethod.com",
+    "email": "info@trueinfluencemethod.com",
     "speakingEmail": "speaking@trueinfluencemethod.com",
     "year": 2026,
     "navMenus": [
@@ -17,9 +17,21 @@
             "label": "Work With Me",
             "items": [
                 { "label": "All Programs", "route": "work" },
-                { "label": "Tell Your Story (Phase 1)", "route": "product", "params": { "id": "phase-1" } },
-                { "label": "Signature Talk (Phase 2)", "route": "product", "params": { "id": "phase-2" } },
-                { "label": "Keynote \u00b7 TEDx (Phase 3)", "route": "product", "params": { "id": "phase-3" } },
+                {
+                    "label": "Tell Your Story (Phase 1)",
+                    "route": "product",
+                    "params": { "id": "phase-1" }
+                },
+                {
+                    "label": "Signature Talk (Phase 2)",
+                    "route": "product",
+                    "params": { "id": "phase-2" }
+                },
+                {
+                    "label": "Keynote \u00b7 TEDx (Phase 3)",
+                    "route": "product",
+                    "params": { "id": "phase-3" }
+                },
                 { "label": "Private Training", "route": "legacy" },
                 { "label": "Corporate", "route": "corporate" },
                 { "label": "\u2014 Book Joanna to speak", "route": "speaking" }
@@ -34,7 +46,11 @@
             "id": "community",
             "label": "Community",
             "items": [
-                { "label": "The Vault (Free \u00b7 June 5)", "route": "product", "params": { "id": "vault" } },
+                {
+                    "label": "The Vault (Free \u00b7 June 5)",
+                    "route": "product",
+                    "params": { "id": "vault" }
+                },
                 { "label": "Monthly Gathering", "route": "community" },
                 { "label": "Events", "route": "community" }
             ]

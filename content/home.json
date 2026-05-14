@@ -209,7 +209,7 @@
             "body": "You know your work — but you over-explain it when it matters most. Your message loses energy as you explain it.",
             "quote": "\"My message lands.\"",
             "arrow": "→ Build my talk",
-            "route": "the-authority",
+            "route": "authority",
             "featured": true
         },
         {
@@ -220,7 +220,7 @@
             "body": "You've built something significant — but you are not clearly known for what you do <em>differently.</em>",
             "quote": "\"I'm known for something specific.\"",
             "arrow": "→ Define my legacy",
-            "route": "the-legacy",
+            "route": "legacy",
             "featured": false
         }
     ],
