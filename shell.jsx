@@ -23,6 +23,8 @@ const priceOf = (p) =>
 
 const Nav = ({ route }) => {
     const [openMenu, setOpenMenu] = useState(null);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [expandedId, setExpandedId] = useState(null);
     const navRef = useRef(null);
 
     useEffect(() => {
@@ -34,62 +36,154 @@ const Nav = ({ route }) => {
         return () => document.removeEventListener("click", onClickAway);
     }, []);
 
+    // Lock body scroll when sidebar is open
+    useEffect(() => {
+        if (sidebarOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+        return () => { document.body.style.overflow = ""; };
+    }, [sidebarOpen]);
+
     const G = window.GLOBAL || {};
     const menus = G.navMenus || [];
 
+    const closeSidebar = () => {
+        setSidebarOpen(false);
+        setExpandedId(null);
+    };
+
+    const handleSidebarNav = (m) => {
+        if (m.route) {
+            goTo(m.route);
+            closeSidebar();
+        } else {
+            setExpandedId(expandedId === m.id ? null : m.id);
+        }
+    };
+
+    const handleSidebarSubNav = (it) => {
+        goTo(it.route, it.params);
+        closeSidebar();
+    };
+
     return (
-        <header className="nav" ref={navRef}>
-            <div className="nav-inner">
-                <a className="brand" onClick={() => goTo("home")}>
-                    <img
-                        className="brand-logo"
-                        src="assets/logo-transparent.png"
-                        alt="True Influence Method"
-                    />
-                    <span className="brand-name">
-                        {(window.GLOBAL && window.GLOBAL.siteName) ||
-                            "True Influence Method"}
-                    </span>
-                </a>
-                <nav className="nav-items">
+        <>
+            <header className="nav" ref={navRef}>
+                <div className="nav-inner">
+                    <a className="brand" onClick={() => goTo("home")}>
+                        <img
+                            className="brand-logo"
+                            src="assets/logo-transparent.png"
+                            alt="True Influence Method"
+                        />
+                        <span className="brand-name">
+                            {(window.GLOBAL && window.GLOBAL.siteName) ||
+                                "True Influence Method"}
+                        </span>
+                    </a>
+                    <nav className="nav-items">
+                        {menus.map((m) => (
+                            <div
+                                key={m.id}
+                                className={
+                                    "nav-item" + (openMenu === m.id ? " open" : "")
+                                }
+                                onMouseEnter={() => m.items && setOpenMenu(m.id)}
+                                onMouseLeave={() => m.items && setOpenMenu(null)}
+                            >
+                                <button
+                                    type="button"
+                                    className="nav-link"
+                                    onClick={() => {
+                                        if (m.route) {
+                                            goTo(m.route);
+                                            setOpenMenu(null);
+                                        } else
+                                            setOpenMenu(
+                                                openMenu === m.id ? null : m.id,
+                                            );
+                                    }}
+                                >
+                                    {m.label}
+                                    {m.items && (
+                                        <span className="nav-caret">▾</span>
+                                    )}
+                                </button>
+                                {m.items && openMenu === m.id && (
+                                    <div className="nav-menu">
+                                        {m.items.map((it, i) => (
+                                            <button
+                                                key={i}
+                                                type="button"
+                                                className="nav-menu-item"
+                                                onClick={() => {
+                                                    goTo(it.route, it.params);
+                                                    setOpenMenu(null);
+                                                }}
+                                            >
+                                                {it.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </nav>
+                    {/* Desktop Start button — hidden on mobile via CSS */}
+                    <button
+                        className="btn btn-primary btn-sm btn-start-desktop"
+                        onClick={() => goTo("start")}
+                    >
+                        Start →
+                    </button>
+
+                    {/* Hamburger — visible on mobile */}
+                    <button
+                        className={"hamburger" + (sidebarOpen ? " open" : "")}
+                        onClick={() => setSidebarOpen(!sidebarOpen)}
+                        aria-label={sidebarOpen ? "Close menu" : "Open menu"}
+                    >
+                        <span />
+                        <span />
+                        <span />
+                    </button>
+                </div>
+            </header>
+
+            {/* Sidebar overlay + drawer (outside header to avoid backdrop-filter containment) */}
+            {sidebarOpen && (
+                <div className="sidebar-overlay" onClick={closeSidebar} />
+            )}
+            <div className={"sidebar" + (sidebarOpen ? " open" : "")}>
+                <div className="sidebar-header">
+                    <span className="sidebar-title">Menu</span>
+                    <button className="sidebar-close" onClick={closeSidebar}>
+                        ✕
+                    </button>
+                </div>
+                <nav className="sidebar-nav">
                     {menus.map((m) => (
-                        <div
-                            key={m.id}
-                            className={
-                                "nav-item" + (openMenu === m.id ? " open" : "")
-                            }
-                            onMouseEnter={() => m.items && setOpenMenu(m.id)}
-                            onMouseLeave={() => m.items && setOpenMenu(null)}
-                        >
+                        <div key={m.id} className="sidebar-group">
                             <button
                                 type="button"
-                                className="nav-link"
-                                onClick={() => {
-                                    if (m.route) {
-                                        goTo(m.route);
-                                        setOpenMenu(null);
-                                    } else
-                                        setOpenMenu(
-                                            openMenu === m.id ? null : m.id,
-                                        );
-                                }}
+                                className={"sidebar-link" + (expandedId === m.id ? " expanded" : "")}
+                                onClick={() => handleSidebarNav(m)}
                             >
                                 {m.label}
                                 {m.items && (
-                                    <span className="nav-caret">▾</span>
+                                    <span className={"sidebar-caret" + (expandedId === m.id ? " open" : "")}>▾</span>
                                 )}
                             </button>
-                            {m.items && openMenu === m.id && (
-                                <div className="nav-menu">
+                            {m.items && expandedId === m.id && (
+                                <div className="sidebar-sub">
                                     {m.items.map((it, i) => (
                                         <button
                                             key={i}
                                             type="button"
-                                            className="nav-menu-item"
-                                            onClick={() => {
-                                                goTo(it.route, it.params);
-                                                setOpenMenu(null);
-                                            }}
+                                            className="sidebar-sub-link"
+                                            onClick={() => handleSidebarSubNav(it)}
                                         >
                                             {it.label}
                                         </button>
@@ -98,15 +192,17 @@ const Nav = ({ route }) => {
                             )}
                         </div>
                     ))}
+                    <div className="sidebar-cta">
+                        <button
+                            className="btn btn-primary"
+                            onClick={() => { goTo("start"); closeSidebar(); }}
+                        >
+                            Start →
+                        </button>
+                    </div>
                 </nav>
-                <button
-                    className="btn btn-primary btn-sm"
-                    onClick={() => goTo("start")}
-                >
-                    Start →
-                </button>
             </div>
-        </header>
+        </>
     );
 };
 
@@ -276,10 +372,29 @@ const CHECKOUT_URLS = {
         "https://go.trueinfluencemethod.com/checkout-4-session-training-package",
 };
 
+// ----- per-page SEO metadata -----
+const PAGE_SEO = {
+    home:      { title: "True Influence Method \u2014 with Joanna", desc: "Leaders find their message, build trust, and earn influence \u2014 without speaking. Work with Joanna." },
+    speaker:   { title: "The Speaker \u2014 Find Your Message | True Influence Method", desc: "You know you have something to say \u2014 but you can\u2019t clearly say what defines you yet. Start Phase 1 and find your message." },
+    authority: { title: "The Authority \u2014 Build Your Talk | True Influence Method", desc: "You know your work \u2014 but you over-explain it when it matters most. Build your signature talk in Phase 2." },
+    legacy:    { title: "The Legacy \u2014 Define Your Legacy | True Influence Method", desc: "You\u2019ve built something significant but you aren\u2019t clearly known for what you do differently. Define your legacy." },
+    about:     { title: "About Joanna \u2014 True Influence Method", desc: "Joanna helps leaders find the words for the work they already do \u2014 and build the rooms where those words land." },
+    journey:   { title: "The Journey \u2014 True Influence Method", desc: "How Joanna found the work \u2014 from a caf\u00e9 conversation to 300+ leaders guided." },
+    stories:   { title: "Success Stories \u2014 True Influence Method", desc: "Real women, real results across every phase of the True Influence Method." },
+    faq:       { title: "FAQ \u2014 True Influence Method", desc: "Answers to common questions about the True Influence Method, programs, and getting started." },
+    speaking:  { title: "Book Joanna to Speak \u2014 True Influence Method", desc: "Book Joanna for your next event, keynote, or corporate training." },
+    community: { title: "Community \u2014 True Influence Method", desc: "Monthly gatherings, events, and community for leaders using the True Influence Method." },
+    corporate: { title: "Corporate Training \u2014 True Influence Method", desc: "The True Influence Method delivered to leadership teams of 6\u201324." },
+    work:      { title: "All Programs \u2014 True Influence Method", desc: "Explore all True Influence Method programs and find the path that fits where you are." },
+    product:   { title: "Program Details \u2014 True Influence Method", desc: "Detailed information about True Influence Method programs and products." },
+    assessment:{ title: "Influence Path Assessment \u2014 True Influence Method", desc: "Take the 5-minute assessment to find your phase in the True Influence Method." },
+};
+
 Object.assign(window, {
     goTo,
     PRODUCTS,
     CHECKOUT_URLS,
+    PAGE_SEO,
     priceOf,
     fmt,
     Nav,
