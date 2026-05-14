@@ -1,4 +1,5 @@
 {
+    "hideOriginalHero": true,
     "heroEyebrow": "The True Influence Method",
     "heroTitle": "You're not missing<br/>a <span class=\"u\">message.</span><br/>You're missing <em>trust.</em>",
     "heroBody": "To gain influence, income, and impact — speaking doesn't cut it. It's time to <strong>lead</strong> with your message: turn your lived experience into a message people trust and follow.",
@@ -10,6 +11,11 @@
     "heroImage": "assets/hero-portrait.jpg",
     "heroQuote": "\"We need the moment of your personal breakthrough that led to your special sauce.\"",
     "heroQuoteAuthor": "— Joanna",
+    "brandHeroVideo": "assets/video.mp4",
+    "brandHeroHeading": "Transformation Is Priceless.",
+    "brandHeroBody": "You’ve built something meaningful. Now learn how to speak about it in a way that moves rooms, earns trust, and builds legacy.",
+    "brandHeroCtaPrimary": "Find My Program →",
+    "brandHeroCtaSecondary": "Explore the Method →",
     "logoRowLabel": "Trusted by leaders at",
     "logos": [
         {
@@ -81,7 +87,7 @@
     "closerCtaSecondary": "Try $29 first",
     "icpCards": [
         {
-            "phase": "ICP 1 · The Speaker",
+            "phase": "The Speaker",
             "heading": "Find my<br/>message",
             "meta1": "Early stage · 3–8 yrs",
             "meta2": "Revenue $100K – $500K",
@@ -92,7 +98,7 @@
             "featured": false
         },
         {
-            "phase": "ICP 2 · The Authority",
+            "phase": "The Authority",
             "heading": "Build my<br/>talk",
             "meta1": "Established · 10–20 yrs",
             "meta2": "Revenue $500K – $5M+",
@@ -103,7 +109,7 @@
             "featured": true
         },
         {
-            "phase": "ICP 3 · The Legacy",
+            "phase": "The Legacy",
             "heading": "Define my<br/>legacy",
             "meta1": "Advanced · 20+ yrs",
             "meta2": "Revenue $5M – $25M+",

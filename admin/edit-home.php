@@ -7,6 +7,7 @@ $msg = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $d = $_POST;
   $data = [
+    'hideOriginalHero' => isset($d['hideOriginalHero']),
     'heroEyebrow' => strip_tags($d['heroEyebrow']),
     'heroTitle' => $d['heroTitle'],
     'heroBody' => $d['heroBody'],
@@ -18,6 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     'heroImage' => strip_tags($d['heroImage']),
     'heroQuote' => $d['heroQuote'],
     'heroQuoteAuthor' => strip_tags($d['heroQuoteAuthor']),
+    'brandHeroVideo' => strip_tags($d['brandHeroVideo']),
+    'brandHeroHeading' => $d['brandHeroHeading'],
+    'brandHeroBody' => $d['brandHeroBody'],
+    'brandHeroCtaPrimary' => strip_tags($d['brandHeroCtaPrimary']),
+    'brandHeroCtaSecondary' => strip_tags($d['brandHeroCtaSecondary']),
     'logoRowLabel' => strip_tags($d['logoRowLabel']),
     'logos' => array_map(function($i) use ($d) {
       return ['src' => strip_tags($d["logo_src_$i"] ?? ''), 'alt' => strip_tags($d['logo_alt'][$i] ?? '')];
@@ -139,6 +145,23 @@ if ($msg) echo "<div class=\"msg\">$msg</div>";
     <div class="field"><label>Quote Author</label><input name="heroQuoteAuthor" value="<?= htmlspecialchars($data['heroQuoteAuthor'] ?? '') ?>"></div>
   </div>
   <?php imageField('heroImage', $data['heroImage'] ?? '', 'Hero Image'); ?>
+  <div class="field" style="margin-top:-8px"><label>
+    <input type="checkbox" name="hideOriginalHero" value="1" <?= ($data['hideOriginalHero'] ?? false) ? 'checked' : '' ?>>
+    Hide original hero section
+  </label></div>
+
+  <div class="section-h">Brand Hero (cinematic video)</div>
+  <div class="field"><?php imageField('brandHeroVideo', $data['brandHeroVideo'] ?? '', 'Video (mp4)'); ?></div>
+  <div class="field"><label>Heading</label>
+    <input name="brandHeroHeading" value="<?= htmlspecialchars($data['brandHeroHeading'] ?? '') ?>">
+  </div>
+  <div class="field"><label>Body</label>
+    <textarea name="brandHeroBody" rows="3"><?= htmlspecialchars($data['brandHeroBody'] ?? '') ?></textarea>
+  </div>
+  <div class="row">
+    <div class="field"><label>CTA Primary</label><input name="brandHeroCtaPrimary" value="<?= htmlspecialchars($data['brandHeroCtaPrimary'] ?? '') ?>"></div>
+    <div class="field"><label>CTA Secondary</label><input name="brandHeroCtaSecondary" value="<?= htmlspecialchars($data['brandHeroCtaSecondary'] ?? '') ?>"></div>
+  </div>
 
   <div class="section-h">Logos bar</div>
   <div class="field"><label>Label</label><input name="logoRowLabel" value="<?= htmlspecialchars($data['logoRowLabel'] ?? '') ?>"></div>
