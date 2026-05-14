@@ -191,14 +191,14 @@
     "closerCtaSecondary": "Try $29 first",
     "icpCards": [
         {
-            "phase": "",
-            "heading": "",
-            "meta1": "",
-            "meta2": "",
-            "body": "",
-            "quote": "",
-            "arrow": "",
-            "route": "card-0",
+            "phase": "The Speaker",
+            "heading": "Find my<br/>message",
+            "meta1": "Early stage · 3–8 yrs",
+            "meta2": "Revenue $100K – $500K",
+            "body": "You know you have something to say — but you can't clearly say what defines you yet.",
+            "quote": "\"I know what defines me.\"",
+            "arrow": "→ Find my message",
+            "route": "speaker",
             "featured": false
         },
         {
@@ -248,9 +248,9 @@
     ],
     "testimonials": [
         {
-            "quote": "",
-            "name": "",
-            "role": ""
+            "quote": "I know Joanna's helped me with some of my speeches. I had a conference a couple like a year and a half ago, and she helped me kind of build the presentation.\"\"I now feel inspired and more clear in my why and my purpose.",
+            "name": "Victoria Richardson",
+            "role": "Speaker · Leadership"
         },
         {
             "quote": "Biggest change in me is confidence. I found the part of me that is willing to tell it.\" \"And I've told Joanna, she's my changing myself into the wind. So, this is like taking off. It's like taking flight. I am so happy I did this. I found the part of me that is willing to tell it. That's what—I'm going to tell it from the place I am now.",
