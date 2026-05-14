@@ -30,14 +30,7 @@ jobs:
                       **/test.html
                       **/project-docs.md
                       **/design-canvas.jsx
-                      **/home.jsx
-                      **/icp.jsx
-                      **/products.jsx
-                      **/shell.jsx
-                      **/supporting.jsx
-                      **/tweaks-panel.jsx
                       **/wireframes.jsx
-                      **/content-loader.js
 
             - name: Deployment summary
               if: success()
