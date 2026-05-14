@@ -62,19 +62,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     'closerTitle' => strip_tags($d['stories_closerTitle']),
     'closerCta' => strip_tags($d['stories_closerCta']),
   ];
-  $storyImages = array_map('trim', explode("\n", $d['stories_images'] ?? ''));
-  foreach (explode("\n---\n", $d['stories_items']) as $i => $block) {
-    $lines = array_map('trim', explode("\n", $block));
-    if (count($lines) >= 3) {
-      $data['stories']['items'][] = [
-        'name' => strip_tags($lines[0]),
-        'role' => strip_tags($lines[1]),
-        'quote' => $lines[2],
-        'body' => $lines[3] ?? '',
-        'phase' => strip_tags($lines[4] ?? ''),
-        'image' => strip_tags($storyImages[$i] ?? ''),
-      ];
-    }
+  $storyNames = $d['story_name'] ?? [];
+  $storyRoles = $d['story_role'] ?? [];
+  $storyQuotes = $d['story_quote'] ?? [];
+  $storyBodies = $d['story_body'] ?? [];
+  $storyPhases = $d['story_phase'] ?? [];
+  $storyImages = $d['story_image'] ?? [];
+  $data['stories']['items'] = [];
+  foreach ($storyNames as $i => $name) {
+    if (empty($name)) continue;
+    $data['stories']['items'][] = [
+      'name' => strip_tags($name),
+      'role' => strip_tags($storyRoles[$i] ?? ''),
+      'quote' => strip_tags($storyQuotes[$i] ?? ''),
+      'body' => strip_tags($storyBodies[$i] ?? ''),
+      'phase' => strip_tags($storyPhases[$i] ?? ''),
+      'image' => strip_tags($storyImages[$i] ?? ''),
+    ];
   }
 
   // FAQ
@@ -184,23 +188,21 @@ if ($msg) echo "<div class=\"msg\">$msg</div>";
     <div class="field"><label>Lead</label><input name="stories_lead" value="<?= htmlspecialchars($data['stories']['lead'] ?? '') ?>"></div>
   </div>
   <div class="field"><label>Title (HTML)</label><textarea name="stories_title" rows="2"><?= htmlspecialchars($data['stories']['title'] ?? '') ?></textarea></div>
-  <div class="field"><label>Items (name \n role \n quote \n body \n phase, separate with ---)</label>
-    <textarea name="stories_items" rows="10"><?php
-      $si = $data['stories']['items'] ?? [];
-      $out = [];
-      foreach ($si as $s) {
-        $out[] = ($s['name'] ?? '') . "\n" . ($s['role'] ?? '') . "\n" . ($s['quote'] ?? '') . "\n" . ($s['body'] ?? '') . "\n" . ($s['phase'] ?? '');
-      }
-      echo htmlspecialchars(implode("\n---\n", $out));
-    ?>    </textarea>
+  <?php $storyItems = $data['stories']['items'] ?? []; foreach ($storyItems as $si => $s): ?>
+  <div class="repeater">
+    <div class="repeater-h">Story <?= $si + 1 ?></div>
+    <div class="row">
+      <div class="field"><label>Name</label><input name="story_name[<?= $si ?>]" value="<?= htmlspecialchars($s['name'] ?? '') ?>"></div>
+      <div class="field"><label>Role</label><input name="story_role[<?= $si ?>]" value="<?= htmlspecialchars($s['role'] ?? '') ?>"></div>
+    </div>
+    <div class="field"><label>Quote</label><input name="story_quote[<?= $si ?>]" value="<?= htmlspecialchars($s['quote'] ?? '') ?>"></div>
+    <div class="field"><label>Body</label><textarea name="story_body[<?= $si ?>]" rows="2"><?= htmlspecialchars($s['body'] ?? '') ?></textarea></div>
+    <div class="row">
+      <div class="field"><label>Phase</label><input name="story_phase[<?= $si ?>]" value="<?= htmlspecialchars($s['phase'] ?? '') ?>"></div>
+      <div class="field"><?php imageField("story_image[$si]", $s['image'] ?? '', 'Story Image', "story_img_$si"); ?></div>
+    </div>
   </div>
-  <div class="field"><label>Story image paths (one per line, in order)</label>
-    <textarea name="stories_images" rows="4"><?php
-      $si = $data['stories']['items'] ?? [];
-      foreach ($si as $s) echo htmlspecialchars($s['image'] ?? '') . "\n";
-    ?></textarea>
-    <div class="inline-hint">One image path per story, matching the order above. Leave blank for gray placeholder.</div>
-  </div>
+  <?php endforeach; ?>
   <div class="row">
     <div class="field"><label>Closer title</label><input name="stories_closerTitle" value="<?= htmlspecialchars($data['stories']['closerTitle'] ?? '') ?>"></div>
     <div class="field"><label>Closer CTA</label><input name="stories_closerCta" value="<?= htmlspecialchars($data['stories']['closerCta'] ?? '') ?>"></div>
