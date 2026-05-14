@@ -16,31 +16,135 @@
     "brandHeroBody": "You’ve built something meaningful. Now learn how to speak about it in a way that moves rooms, earns trust, and builds legacy.",
     "brandHeroCtaPrimary": "Find My Program →",
     "brandHeroCtaSecondary": "Explore the Method →",
-    "logoRowLabel": "Trusted by leaders at",
+    "logoRowLabel": "Trusted By",
     "logos": [
         {
             "src": "",
-            "alt": "logo 1"
+            "alt": ""
         },
         {
-            "src": "",
-            "alt": "logo 2"
+            "src": "assets/partners/48-hours.webp",
+            "alt": "48 Hours"
         },
         {
-            "src": "",
-            "alt": "logo 3"
+            "src": "assets/partners/abc.png",
+            "alt": "ABC"
         },
         {
-            "src": "",
-            "alt": "logo 4"
+            "src": "assets/partners/aocc.png",
+            "alt": "AOCC"
         },
         {
-            "src": "",
-            "alt": "logo 5"
+            "src": "assets/partners/att.webp",
+            "alt": "AT&T"
         },
         {
-            "src": "",
-            "alt": "logo 6"
+            "src": "assets/partners/bbbs.png",
+            "alt": "BBBS"
+        },
+        {
+            "src": "assets/partners/bgca.png",
+            "alt": "BGCA"
+        },
+        {
+            "src": "assets/partners/bioneers.png",
+            "alt": "Bioneers"
+        },
+        {
+            "src": "assets/partners/bloomberg.png",
+            "alt": "Bloomberg"
+        },
+        {
+            "src": "assets/partners/chandler-chamber.jpeg",
+            "alt": "Chandler Chamber"
+        },
+        {
+            "src": "assets/partners/cnn.webp",
+            "alt": "CNN"
+        },
+        {
+            "src": "assets/partners/deseret-news.webp",
+            "alt": "Deseret News"
+        },
+        {
+            "src": "assets/partners/disney.webp",
+            "alt": "Disney"
+        },
+        {
+            "src": "assets/partners/flagler-college.png",
+            "alt": "Flagler College"
+        },
+        {
+            "src": "assets/partners/forbes.jpeg",
+            "alt": "Forbes"
+        },
+        {
+            "src": "assets/partners/golden-apple.webp",
+            "alt": "Golden Apple Awards"
+        },
+        {
+            "src": "assets/partners/harvard.svg",
+            "alt": "Harvard"
+        },
+        {
+            "src": "assets/partners/iheart-radio.webp",
+            "alt": "iHeart Radio"
+        },
+        {
+            "src": "assets/partners/mtv.png",
+            "alt": "MTV"
+        },
+        {
+            "src": "assets/partners/mentoring-monday.png",
+            "alt": "Mentoring Monday"
+        },
+        {
+            "src": "assets/partners/nawbo.jpg",
+            "alt": "NAWBO"
+        },
+        {
+            "src": "assets/partners/pbj.png",
+            "alt": "PBJ"
+        },
+        {
+            "src": "assets/partners/rsc.webp",
+            "alt": "RSC"
+        },
+        {
+            "src": "assets/partners/scaleup.jpeg",
+            "alt": "ScaleUp"
+        },
+        {
+            "src": "assets/partners/shambhala.png",
+            "alt": "Shambhala"
+        },
+        {
+            "src": "assets/partners/union-college.png",
+            "alt": "Union College"
+        },
+        {
+            "src": "assets/partners/usm.png",
+            "alt": "USM"
+        },
+        {
+            "src": "assets/partners/usa-today.svg",
+            "alt": "USA Today"
+        },
+        {
+            "src": "assets/partners/vassar-college.png",
+            "alt": "Vassar College"
+        },
+        {
+            "src": "assets/partners/wjct.webp",
+            "alt": "WJCT"
+        },
+        {
+            "src": "assets/partners/wildglobal.webp",
+            "alt": "Wild Global"
+        },
+        {
+            "src": "assets/partners/yahoo-news.png",
+            "alt": "Yahoo News"
         }
     ],
     "falseProblemEyebrow": "What you've been telling yourself",
@@ -105,7 +209,7 @@
             "body": "You know your work — but you over-explain it when it matters most. Your message loses energy as you explain it.",
             "quote": "\"My message lands.\"",
             "arrow": "→ Build my talk",
-            "route": "authority",
+            "route": "the-authority",
             "featured": true
         },
         {
@@ -116,7 +220,7 @@
             "body": "You've built something significant — but you are not clearly known for what you do <em>differently.</em>",
             "quote": "\"I'm known for something specific.\"",
             "arrow": "→ Define my legacy",
-            "route": "legacy",
+            "route": "the-legacy",
             "featured": false
         }
     ],
@@ -144,9 +248,19 @@
     ],
     "testimonials": [
         {
-            "quote": "I finally stopped explaining myself. My message went from \"good idea\" to \"she means it.\" Booked three keynotes in six weeks.",
-            "name": "Maya",
-            "role": "Founder · Tech"
+            "quote": "I know Joanna's helped me with some of my speeches. I had a conference a couple like a year and a half ago, and she helped me kind of build the presentation.\"“I now feel inspired and more clear in my why and my purpose.",
+            "name": "Victoria Richardson",
+            "role": "Speaker · Leadership"
+        },
+        {
+            "quote": "Biggest change in me is confidence. I found the part of me that is willing to tell it.” \"And I've told Joanna, she's my changing myself into the wind. So, this is like taking off. It's like taking flight. I am so happy I did this. I found the part of me that is willing to tell it. That's what—I'm going to tell it from the place I am now.",
+            "name": "LeQuisha Underwood",
+            "role": "Executive Director · Nonprofit"
+        },
+        {
+            "quote": "I've worked with Joanna to really understand what made me unique in the world of business. I felt really lost about what I could actually talk about and Joanna was able to help me go through several breakthroughs to be able to put together a talk that I feel will be able to impact someone's life.",
+            "name": "Kendi Brown",
+            "role": "Founder · Business Strategy"
         }
     ]
 }

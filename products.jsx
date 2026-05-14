@@ -99,148 +99,21 @@ const ProductDetail = ({ id }) => {
 
 const CheckoutPage = ({ id }) => {
   const p = PRODUCTS[id];
-  const [form, setForm] = React.useState({});
-  const [paymentMethod, setPaymentMethod] = React.useState('card');
-  const [plan, setPlan] = React.useState('full');
-  const [confirmed, setConfirmed] = React.useState(false);
-
-  const C = window.CHECKOUT || {};
-
   if (!p) return <NotFound />;
 
-  const planOptions = p.price > 1000 && p.price < 100000 ? [
-    { id: 'full', label: 'Pay in full', sub: priceOf(p) },
-    { id: 'three', label: '3 monthly payments', sub: '$' + Math.ceil(p.price / 3).toLocaleString() + '/mo' },
-    { id: 'six', label: '6 monthly payments', sub: '$' + Math.ceil(p.price / 6).toLocaleString() + '/mo' },
-  ] : null;
-
-  if (confirmed) {
-    return (
-      <Section tone="paper">
-        <Container narrow style={{ textAlign: 'center' }}>
-          <Eyebrow>{C.confirmedEyebrow}</Eyebrow>
-          <h1 className="display">{C.confirmedTitle}</h1>
-          <p className="lead" dangerouslySetInnerHTML={html(C.confirmedBody ? C.confirmedBody.replace('{{email}}', form.email || 'your inbox') : '')} />
-          <Plate label="welcome moment" h={260} src={C.confirmedImage || 'assets/story-placeholder.jpg'} style={{ margin: '24px 0' }} />
-          <div className="cta-row centered">
-            <Button primary size="lg" onClick={() => goTo('home')}>{C.confirmedCtaPrimary || 'Back to home'}</Button>
-            <Button ghost size="lg" onClick={() => goTo('product', { id: 'vault' })}>{C.confirmedCtaSecondary || 'Add the free Vault session'}</Button>
-          </div>
-        </Container>
-      </Section>
-    );
-  }
+  // Redirect happens in the router (index.html) before React renders.
+  // If we land here, the product has no external checkout URL configured.
+  const C = window.CHECKOUT || {};
 
   return (
     <Section tone="paper">
-      <Container>
-        <div className="bread">
-          <a onClick={() => goTo('home')}>Home</a> <span>→</span>
-          <a onClick={() => goTo('product', { id })}>{p.name}</a> <span>→</span>
-          <strong>Checkout</strong>
-        </div>
-
-        <div className="checkout-grid">
-          <form className="checkout-form" onSubmit={(e) => { e.preventDefault(); setConfirmed(true); }}>
-            <h1 className="display sm">{C.formTitle || "Welcome in. Let's make it real."}</h1>
-
-            <fieldset>
-              <legend>Your details</legend>
-              <Field label={C.fieldName || 'Full name'} placeholder={C.fieldNamePlaceholder || 'Joanna Surname'}
-                value={form.name} onChange={(v) => setForm({ ...form, name: v })} />
-              <Field label={C.fieldEmail || 'Email'} type="email" placeholder={C.fieldEmailPlaceholder || 'you@email.com'}
-                value={form.email} onChange={(v) => setForm({ ...form, email: v })} />
-              <Field label={C.fieldPhone || 'Phone (optional)'} placeholder={C.fieldPhonePlaceholder || '+1 555 0100'}
-                value={form.phone} onChange={(v) => setForm({ ...form, phone: v })} />
-            </fieldset>
-
-            {planOptions && (
-              <fieldset>
-                <legend>{C.paymentPlansLabel || 'Payment plan'}</legend>
-                <div className="plan-row">
-                  {planOptions.map(o => (
-                    <label key={o.id} className={"plan-opt" + (plan === o.id ? ' selected' : '')}>
-                      <input type="radio" name="plan" value={o.id} checked={plan === o.id}
-                        onChange={() => setPlan(o.id)} />
-                      <span className="plan-label">{o.label}</span>
-                      <span className="plan-sub">{o.sub}</span>
-                    </label>
-                  ))}
-                </div>
-              </fieldset>
-            )}
-
-            <fieldset>
-              <legend>{C.paymentMethodLabel || 'Payment method'}</legend>
-              <div className="paymeth-row">
-                {[
-                  { id: 'card', label: 'Card' },
-                  { id: 'apple', label: 'Apple Pay' },
-                  { id: 'wire', label: 'Wire / Invoice' },
-                ].map(o => (
-                  <label key={o.id} className={"paymeth-opt" + (paymentMethod === o.id ? ' selected' : '')}>
-                    <input type="radio" name="pm" value={o.id} checked={paymentMethod === o.id}
-                      onChange={() => setPaymentMethod(o.id)} />
-                    {o.label}
-                  </label>
-                ))}
-              </div>
-
-              {paymentMethod === 'card' && (
-                <>
-                  <Field label={C.fieldCard || 'Card number'} placeholder={C.fieldCardPlaceholder || '1234 1234 1234 1234'}
-                    value={form.card} onChange={(v) => setForm({ ...form, card: v })} />
-                  <div className="row-2">
-                    <Field label={C.fieldExpiry || 'Expiry'} placeholder={C.fieldExpiryPlaceholder || 'MM / YY'}
-                      value={form.exp} onChange={(v) => setForm({ ...form, exp: v })} />
-                    <Field label={C.fieldCvc || 'CVC'} placeholder={C.fieldCvcPlaceholder || '123'}
-                      value={form.cvc} onChange={(v) => setForm({ ...form, cvc: v })} />
-                  </div>
-                </>
-              )}
-              {paymentMethod === 'apple' && (
-                <div className="apple-pay-block">{C.applePayBlock || 'Press the Apple Pay button to continue securely.'}</div>
-              )}
-              {paymentMethod === 'wire' && (
-                <div className="apple-pay-block">{C.wireBlock || "We'll send wire instructions to your email after submit. Common for Legacy engagements."}</div>
-              )}
-            </fieldset>
-
-            <Button primary size="lg" style={{ width: '100%' }} onClick={() => setConfirmed(true)}>
-              Confirm &amp; pay {priceOf(p)} →
-            </Button>
-            <p className="muted small" style={{ marginTop: 10 }}>
-              {C.secureNote || '🔒 Secure · 14-day refund · By submitting you agree to the terms.'}
-            </p>
-          </form>
-
-          <aside className="order-summary">
-            <Eyebrow>{C.orderSummaryLabel || 'Order summary'}</Eyebrow>
-            {p.phase && <div className="os-phase">{p.phase}</div>}
-            <div className="display sm">{p.name}</div>
-            <p className="os-tag">{p.tagline}</p>
-            <Hairline />
-            <ul className="os-includes">
-              {(p.bullets || []).slice(0, 5).map((b, i) => <li key={i}>{b}</li>)}
-            </ul>
-            <Hairline />
-            <div className="os-totals">
-              <div className="os-row"><span>{C.subtotalLabel || 'Subtotal'}</span><span>{priceOf(p)}</span></div>
-              {p.value && <div className="os-row muted"><span>{C.valueLabel || 'Value'}</span><span>${p.value.toLocaleString()}</span></div>}
-              <div className="os-row big"><span>{C.todayLabel || 'Today'}</span>
-                <span>
-                  {planOptions && plan === 'three' ? '$' + Math.ceil(p.price / 3).toLocaleString() :
-                   planOptions && plan === 'six' ? '$' + Math.ceil(p.price / 6).toLocaleString() :
-                   priceOf(p)}
-                </span>
-              </div>
-            </div>
-            <div className="os-note">
-              {p.id === 'phase-1' && <>{C.phase1Note || 'Includes the in-person retreat + lifetime community.'}</>}
-              {p.id === 'vault' && <>{C.vaultNote || 'Free. Add to cart, no card required.'}</>}
-              {p.id === 'dollar-message' && <>{C.dollarMessageNote || 'Instant access on confirmation.'}</>}
-            </div>
-          </aside>
+      <Container narrow style={{ textAlign: 'center' }}>
+        <Eyebrow>{C.fallbackEyebrow || 'Coming soon'}</Eyebrow>
+        <h1 className="display">{p.name}</h1>
+        <p className="lead">{C.fallbackBody || 'The checkout page for this product is being set up. Please check back shortly.'}</p>
+        <div className="cta-row centered" style={{ marginTop: 32 }}>
+          <Button primary size="lg" onClick={() => goTo('product', { id })}>{C.fallbackCtaSecondary || 'Back to details'} →</Button>
+          <Button ghost size="lg" onClick={() => goTo('home')}>{C.fallbackCtaPrimary || 'Back home'}</Button>
         </div>
       </Container>
     </Section>

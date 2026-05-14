@@ -25,9 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     'brandHeroCtaPrimary' => strip_tags($d['brandHeroCtaPrimary']),
     'brandHeroCtaSecondary' => strip_tags($d['brandHeroCtaSecondary']),
     'logoRowLabel' => strip_tags($d['logoRowLabel']),
-    'logos' => array_map(function($i) use ($d) {
-      return ['src' => strip_tags($d["logo_src_$i"] ?? ''), 'alt' => strip_tags($d['logo_alt'][$i] ?? '')];
-    }, range(0, 5)),
+    'logos' => array_map(function($item) {
+      return [
+        'src' => strip_tags($item['src'] ?? ''),
+        'alt' => strip_tags($item['alt'] ?? ''),
+      ];
+    }, $d['logos'] ?? []),
     'falseProblemEyebrow' => strip_tags($d['falseProblemEyebrow']),
     'falseProblems' => array_map('trim', explode("\n", $d['falseProblems'])),
     'falseProblemOverline' => strip_tags($d['falseProblemOverline']),
@@ -58,19 +61,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   ];
 
   // ICP cards
-  $icpCards = [];
-  foreach (['speaker','authority','legacy'] as $key) {
-    $icpCards[] = [
-      'phase' => strip_tags($d["icp_{$key}_phase"]),
-      'heading' => $d["icp_{$key}_heading"],
-      'meta1' => strip_tags($d["icp_{$key}_meta1"]),
-      'meta2' => strip_tags($d["icp_{$key}_meta2"]),
-      'body' => $d["icp_{$key}_body"],
-      'quote' => $d["icp_{$key}_quote"],
-      'arrow' => strip_tags($d["icp_{$key}_arrow"]),
-      'route' => strip_tags($key),
-      'featured' => $key === 'authority',
+  $icpCards = array_map(function($item) {
+    return [
+      'phase' => strip_tags($item['phase'] ?? ''),
+      'heading' => $item['heading'] ?? '',
+      'meta1' => strip_tags($item['meta1'] ?? ''),
+      'meta2' => strip_tags($item['meta2'] ?? ''),
+      'body' => $item['body'] ?? '',
+      'quote' => $item['quote'] ?? '',
+      'arrow' => strip_tags($item['arrow'] ?? ''),
+      'route' => strip_tags($item['route'] ?? ''),
+      'featured' => !empty($item['featured']),
     ];
+  }, $d['icpCards'] ?? []);
+  
+  // Enrich with auto-route + featured defaults
+  foreach ($icpCards as $i => $card) {
+    if (empty($card['route'])) {
+      $slug = strtolower(trim(preg_replace('/[^a-zA-Z0-9]/', '-', $card['phase'])));
+      $icpCards[$i]['route'] = $slug ?: "card-$i";
+    }
+    if (count($icpCards) >= 3) {
+      $icpCards[$i]['featured'] = ($i === 1);
+    }
   }
   $data['icpCards'] = $icpCards;
 
@@ -99,18 +112,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   ];
 
   // Testimonials
-  $testis = [];
-  foreach (explode("\n---\n", $d['testimonials']) as $block) {
-    $lines = array_map('trim', explode("\n", $block));
-    if (count($lines) >= 2) {
-      $testis[] = [
-        'quote' => $lines[0],
-        'name' => strip_tags($lines[1] ?? ''),
-        'role' => strip_tags($lines[2] ?? ''),
-      ];
-    }
-  }
-  $data['testimonials'] = $testis;
+  $data['testimonials'] = array_map(function($item) {
+    return [
+      'quote' => $item['quote'] ?? '',
+      'name' => strip_tags($item['name'] ?? ''),
+      'role' => strip_tags($item['role'] ?? ''),
+    ];
+  }, $d['testimonials'] ?? []);
 
   saveJson('home.json', $data);
   $msg = 'Homepage saved.';
@@ -163,16 +171,12 @@ if ($msg) echo "<div class=\"msg\">$msg</div>";
     <div class="field"><label>CTA Secondary</label><input name="brandHeroCtaSecondary" value="<?= htmlspecialchars($data['brandHeroCtaSecondary'] ?? '') ?>"></div>
   </div>
 
-  <div class="section-h">Logos bar</div>
-  <div class="field"><label>Label</label><input name="logoRowLabel" value="<?= htmlspecialchars($data['logoRowLabel'] ?? '') ?>"></div>
-  <?php $logos = $data['logos'] ?? []; for ($i = 0; $i < 6; $i++): $l = $logos[$i] ?? []; ?>
-  <div class="repeater" style="padding:10px 16px">
-    <div class="row">
-      <div class="field"><?php imageField("logo_src_$i", $l['src'] ?? '', "Logo " . ($i+1), "logo_img_$i"); ?></div>
-      <div class="field"><label>Alt text</label><input name="logo_alt[<?= $i ?>]" value="<?= htmlspecialchars($l['alt'] ?? '') ?>"></div>
-    </div>
-  </div>
-  <?php endfor; ?>
+  <div class="section-h">Partners / Trusted By</div>
+  <div class="field"><label>Section label</label><input name="logoRowLabel" value="<?= htmlspecialchars($data['logoRowLabel'] ?? '') ?>"></div>
+  <?php renderRepeater('logos', $data['logos'] ?? [], [
+      ['src', 'image', 'Logo Image'],
+      ['alt', 'text', 'Alt Text'],
+  ], ['label' => 'Partner Logos']); ?>
 
   <div class="section-h">The False Problem</div>
   <div class="row">
@@ -224,25 +228,15 @@ if ($msg) echo "<div class=\"msg\">$msg</div>";
   <div class="field"><label>Not sure CTA</label><input name="notSureCta" value="<?= htmlspecialchars($data['notSureCta'] ?? '') ?>"></div>
 
   <div class="section-h">ICP Cards</div>
-  <?php $icpData = $data['icpCards'] ?? []; $icpKeys = ['speaker','authority','legacy']; ?>
-  <?php foreach ($icpKeys as $i => $key): $icp = $icpData[$i] ?? []; ?>
-  <div class="repeater">
-    <div class="repeater-h"><?= ucfirst($key) ?></div>
-    <div class="row">
-      <div class="field"><label>Phase label</label><input name="icp_<?= $key ?>_phase" value="<?= htmlspecialchars($icp['phase'] ?? '') ?>"></div>
-      <div class="field"><label>Heading (HTML, &lt;br/&gt; allowed)</label><input name="icp_<?= $key ?>_heading" value="<?= htmlspecialchars($icp['heading'] ?? '') ?>"></div>
-    </div>
-    <div class="row">
-      <div class="field"><label>Meta 1</label><input name="icp_<?= $key ?>_meta1" value="<?= htmlspecialchars($icp['meta1'] ?? '') ?>"></div>
-      <div class="field"><label>Meta 2</label><input name="icp_<?= $key ?>_meta2" value="<?= htmlspecialchars($icp['meta2'] ?? '') ?>"></div>
-    </div>
-    <div class="field"><label>Body</label><textarea name="icp_<?= $key ?>_body" rows="2"><?= htmlspecialchars($icp['body'] ?? '') ?></textarea></div>
-    <div class="row">
-      <div class="field"><label>Quote</label><input name="icp_<?= $key ?>_quote" value="<?= htmlspecialchars($icp['quote'] ?? '') ?>"></div>
-      <div class="field"><label>Arrow label</label><input name="icp_<?= $key ?>_arrow" value="<?= htmlspecialchars($icp['arrow'] ?? '') ?>"></div>
-    </div>
-  </div>
-  <?php endforeach; ?>
+  <?php renderRepeater('icpCards', $data['icpCards'] ?? [], [
+      ['phase', 'text', 'Phase label'],
+      ['heading', 'text', 'Heading (HTML)'],
+      ['meta1', 'text', 'Meta 1'],
+      ['meta2', 'text', 'Meta 2'],
+      ['body', 'textarea', 'Body'],
+      ['quote', 'text', 'Quote'],
+      ['arrow', 'text', 'Arrow label'],
+  ], ['label' => 'ICP Cards', 'minItems' => 0, 'maxItems' => 3]); ?>
 
   <div class="section-h">Front Door Offers</div>
   <?php $fd = $data['frontDoor'] ?? []; ?>
@@ -275,17 +269,11 @@ if ($msg) echo "<div class=\"msg\">$msg</div>";
 
   <div class="section-h">Testimonials</div>
   <div class="field"><label>Eyebrow</label><input name="testimonialsEyebrow" value="<?= htmlspecialchars($data['testimonialsEyebrow'] ?? '') ?>"></div>
-  <div class="field"><label>Entries (quote \n name \n role, separate entries with ---)</label>
-    <textarea name="testimonials" rows="10"><?php
-      $ts = $data['testimonials'] ?? [];
-      $out = [];
-      foreach ($ts as $t) {
-        $out[] = ($t['quote'] ?? '') . "\n" . ($t['name'] ?? '') . "\n" . ($t['role'] ?? '');
-      }
-      echo htmlspecialchars(implode("\n---\n", $out));
-    ?></textarea>
-    <div class="inline-hint">Format: quote text, then name on next line, then role on next line. Separate entries with ---</div>
-  </div>
+  <?php renderRepeater('testimonials', $data['testimonials'] ?? [], [
+      ['quote', 'textarea', 'Quote'],
+      ['name', 'text', 'Name'],
+      ['role', 'text', 'Role'],
+  ], ['label' => 'Testimonial Entries']); ?>
 
   <div class="section-h">Closer</div>
   <div class="field"><label>Title (HTML)</label><textarea name="closerTitle" rows="2"><?= htmlspecialchars($data['closerTitle'] ?? '') ?></textarea></div>

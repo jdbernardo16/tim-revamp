@@ -174,8 +174,19 @@ const Plate = ({ label = 'photo', h = 320, w, src, style }) => (
   </div>
 );
 
+// ----- external checkout URL mapping (redirects, no static form) -----
+const CHECKOUT_URLS = {
+  'phase-1':    'https://go.trueinfluencemethod.com/checkout-phase-1-375961',
+  'phase-2':    'https://go.trueinfluencemethod.com/checkout-phase-2-487563',
+  'phase-3':    'https://go.trueinfluencemethod.com/checkout-phase-3-888428',
+  'phase-4':    'https://go.trueinfluencemethod.com/checkout-phase-4-471085',
+  'phase-5':    'https://go.trueinfluencemethod.com/phase-5-be-remembered---legacy-framework-9258',
+  'breakthrough':  'https://go.trueinfluencemethod.com/checkout---breakthrough-session',
+  'four-session':  'https://go.trueinfluencemethod.com/checkout-4-session-training-package',
+};
+
 Object.assign(window, {
-  goTo, PRODUCTS, priceOf, fmt,
+  goTo, PRODUCTS, CHECKOUT_URLS, priceOf, fmt,
   Nav, Footer, Container, Section, Button, Pill, Eyebrow,
   Hairline, Underline, Quote, Field, Plate,
 });

@@ -134,73 +134,36 @@ const HomePage = () => {
             </Section>
 
             {/* ── Partners / Trusted By Marquee ── */}
-            <section className="partners-section">
-                <div className="partners-container" style={{ paddingTop: 0 }}>
-                    {/* Gold divider */}
-                    <div className="partners-gold-divider" style={{ marginBottom: 48 }}></div>
-
-                    {/* Heading */}
-                    <div className="partners-heading">
-                        <span className="partners-pill">
-                            <span className="partners-pill-dot"></span>
-                            Trusted By
-                        </span>
+            {(HOME.logos || []).length > 0 && (
+                <section className="partners-section">
+                    <div className="partners-container" style={{ paddingTop: 0 }}>
+                        <div className="partners-gold-divider partners-divider-ink" style={{ marginBottom: 48 }} />
+                        <div className="partners-heading">
+                            <span className="partners-pill-ink">
+                                <span className="partners-pill-dot-ink" />
+                                {HOME.logoRowLabel || "Trusted By"}
+                            </span>
+                        </div>
                     </div>
-                </div>
 
-                {/* Marquee Logo Strip */}
-                <div className="partners-marquee-wrapper">
-                    <div className="partners-marquee-track" aria-label="As Seen On">
-                        {[
-                            ["30 Rock", "30-rock.webp"],
-                            ["48 Hours", "48-hours.webp"],
-                            ["ABC", "abc.png"],
-                            ["AOCC", "aocc.png"],
-                            ["AT&T", "att.webp"],
-                            ["BBBS", "bbbs.png"],
-                            ["BGCA", "bgca.png"],
-                            ["Bioneers", "bioneers.png"],
-                            ["Bloomberg", "bloomberg.png"],
-                            ["Chandler Chamber", "chandler-chamber.jpeg"],
-                            ["CNN", "cnn.webp"],
-                            ["Deseret News", "deseret-news.webp"],
-                            ["Disney", "disney.webp"],
-                            ["Flagler College", "flagler-college.png"],
-                            ["Forbes", "forbes.jpeg"],
-                            ["Golden Apple Awards", "golden-apple.webp"],
-                            ["Harvard", "harvard.svg"],
-                            ["iHeart Radio", "iheart-radio.webp"],
-                            ["MTV", "mtv.png"],
-                            ["Mentoring Monday", "mentoring-monday.png"],
-                            ["NAWBO", "nawbo.jpg"],
-                            ["PBJ", "pbj.png"],
-                            ["RSC", "rsc.webp"],
-                            ["ScaleUp", "scaleup.jpeg"],
-                            ["Shambhala", "shambhala.png"],
-                            ["Union College", "union-college.png"],
-                            ["USM", "usm.png"],
-                            ["USA Today", "usa-today.svg"],
-                            ["Vassar College", "vassar-college.png"],
-                            ["WJCT", "wjct.webp"],
-                            ["Wild Global", "wildglobal.webp"],
-                            ["Yahoo News", "yahoo-news.png"],
-                        ].flatMap(([label, file]) => [0, 1].map(() => [label, file])).map(([label, file], i) => (
-                            <div key={i} className="partner-logo" aria-label={label}>
-                                <img
-                                    src={"assets/partners/" + file}
-                                    alt={label}
-                                    draggable="false"
-                                />
-                            </div>
-                        ))}
+                    <div className="partners-marquee-wrapper">
+                        <div className="partners-marquee-track">
+                            {((HOME.logos || []).length > 0
+                                ? [...HOME.logos, ...HOME.logos]
+                                : []
+                            ).map((logo, i) => (
+                                <div key={i} className="partner-logo">
+                                    <img src={logo.src || ""} alt={logo.alt || ""} draggable="false" />
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
 
-                <div className="partners-container" style={{ paddingBottom: 0 }}>
-                    {/* Gold divider */}
-                    <div className="partners-gold-divider" style={{ marginTop: 48 }}></div>
-                </div>
-            </section>
+                    <div className="partners-container" style={{ paddingBottom: 0 }}>
+                        <div className="partners-gold-divider partners-divider-ink" style={{ marginTop: 48 }} />
+                    </div>
+                </section>
+            )}
 
             <Section tone="ink">
                 <Container narrow>
@@ -389,7 +352,7 @@ const HomePage = () => {
                         {HOME.testimonialsEyebrow}
                     </Eyebrow>
                     <div className="testi-grid">
-                        {(HOME.testimonials || []).map((t, i) => (
+                        {(Array.isArray(HOME.testimonials) ? HOME.testimonials : []).map((t, i) => (
                             <figure key={i} className="testi">
                                 <span className="testi-mark">"</span>
                                 <blockquote>{t.quote}</blockquote>

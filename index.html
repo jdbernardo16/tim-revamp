@@ -58,24 +58,51 @@
       const p = Array.isArray(t.palette) ? t.palette : PALETTES[0];
       const [route, setRoute] = React.useState({ name: 'home', params: {} });
 
+      // Intercept checkout — redirect externally before React renders, no flash
+      const redirectCheckout = (route, params) => {
+        if (route === 'checkout') {
+          const url = window.CHECKOUT_URLS?.[params?.id];
+          if (url) { window.location.href = url; return true; }
+        }
+        return false;
+      };
+
       // route via custom events from anywhere
       React.useEffect(() => {
         const onNav = (e) => {
           const { route, params } = e.detail || {};
+          if (redirectCheckout(route, params)) return; // redirect — no React render
           setRoute({ name: route || 'home', params: params || {} });
-          // also push to hash for refresh-survival
+          // push hash for refresh-survival + browser history navigation
           const hash = route ? `#/${route}${params && params.id ? '/' + params.id : ''}` : '';
-          if (window.location.hash !== hash) window.history.replaceState(null, '', hash || ' ');
+          if (window.location.hash !== hash) window.history.pushState(null, '', hash || ' ');
         };
         window.addEventListener('tim:navigate', onNav);
+
+        // handle browser back/forward
+        const onPopState = () => {
+          const h = window.location.hash.replace(/^#\//, '');
+          if (h) {
+            const [r, id] = h.split('/');
+            if (redirectCheckout(r, id ? { id } : {})) return;
+            setRoute({ name: r, params: id ? { id } : {} });
+          } else {
+            setRoute({ name: 'home', params: {} });
+          }
+        };
+        window.addEventListener('popstate', onPopState);
 
         // initial route from hash
         const h = window.location.hash.replace(/^#\//, '');
         if (h) {
           const [r, id] = h.split('/');
+          if (redirectCheckout(r, id ? { id } : {})) return;
           setRoute({ name: r, params: id ? { id } : {} });
         }
-        return () => window.removeEventListener('tim:navigate', onNav);
+        return () => {
+          window.removeEventListener('tim:navigate', onNav);
+          window.removeEventListener('popstate', onPopState);
+        };
       }, []);
 
       // apply palette
