@@ -484,6 +484,12 @@
     font-family: inherit;
     color: inherit;
 }
+.icp-card .plate {
+    width: calc(100% + 48px);
+    margin: -28px -24px 0;
+    border: 0;
+    border-radius: 0;
+}
 .icp-card:hover {
     transform: translateY(-3px);
     border-color: var(--accent);

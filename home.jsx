@@ -11,7 +11,6 @@ const HomePage = () => {
                     <Container>
                         <div className="hero-grid">
                             <div className="hero-copy">
-                                <Eyebrow>{HOME.heroEyebrow}</Eyebrow>
                                 <h1
                                     className="display"
                                     dangerouslySetInnerHTML={html(
@@ -43,10 +42,7 @@ const HomePage = () => {
                                     </Button>
                                 </div>
                                 <div className="hero-meta">
-                                    <span>{HOME.heroStars}</span>
-                                    <span>{HOME.heroMeta1}</span>
-                                    <span>·</span>
-                                    <span>{HOME.heroMeta2}</span>
+                                    <span>{HOME.heroMeta1}{HOME.heroMeta1 && HOME.heroMeta2 ? ' | ' : ''}{HOME.heroMeta2}</span>
                                 </div>
                             </div>
                             <div className="hero-art">
@@ -93,7 +89,6 @@ const HomePage = () => {
                 <div className="brand-hero-overlay" />
                 <div className="brand-hero-content">
                     <div className="hero-copy">
-                        <Eyebrow>{HOME.heroEyebrow}</Eyebrow>
                         <h1
                             className="display"
                             dangerouslySetInnerHTML={html(HOME.heroTitle)}
@@ -119,11 +114,8 @@ const HomePage = () => {
                             </Button>
                         </div>
                         <div className="hero-meta">
-                            <span>{HOME.heroStars}</span>
-                            <span>{HOME.heroMeta1}</span>
-                            <span>·</span>
-                            <span>{HOME.heroMeta2}</span>
-                        </div>
+                                    <span>{HOME.heroMeta1}{HOME.heroMeta1 && HOME.heroMeta2 ? ' | ' : ''}{HOME.heroMeta2}</span>
+                                </div>
                     </div>
                 </div>
                 <div className="scroll-indicator">
@@ -300,6 +292,13 @@ const HomePage = () => {
                                 }
                                 onClick={() => goTo(card.route)}
                             >
+                                {card.image && (
+                                    <Plate
+                                        label={card.phase || "card"}
+                                        src={card.image}
+                                        style={{ aspectRatio: "3 / 2", height: "auto" }}
+                                    />
+                                )}
                                 <div className="icp-phase">{card.phase}</div>
                                 <h3
                                     className="display sm"
@@ -385,7 +384,12 @@ const HomePage = () => {
                                 <span className="testi-mark">"</span>
                                 <blockquote>{t.quote}</blockquote>
                                 <figcaption>
-                                    <strong>{t.name}</strong> · {t.role}
+                                    {t.image && (
+                                        <img className="testi-avatar" src={t.image} alt={t.name} />
+                                    )}
+                                    <span>
+                                        <strong>{t.name}</strong> · {t.role}
+                                    </span>
                                 </figcaption>
                             </figure>
                         ))}

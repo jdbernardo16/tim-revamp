@@ -8,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $d = $_POST;
   $data = [
     'hideOriginalHero' => isset($d['hideOriginalHero']),
-    'heroEyebrow' => strip_tags($d['heroEyebrow']),
     'heroTitle' => $d['heroTitle'],
     'heroBody' => $d['heroBody'],
     'heroCtaPrimary' => strip_tags($d['heroCtaPrimary']),
@@ -30,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'src' => strip_tags($item['src'] ?? ''),
         'alt' => strip_tags($item['alt'] ?? ''),
       ];
-    }, $d['logos'] ?? []),
+    }, array_filter($d['logos'] ?? [], function($k) { return is_numeric($k); }, ARRAY_FILTER_USE_KEY)),
     'falseProblemEyebrow' => strip_tags($d['falseProblemEyebrow']),
     'falseProblems' => array_map('trim', explode("\n", $d['falseProblems'])),
     'falseProblemOverline' => strip_tags($d['falseProblemOverline']),
@@ -61,7 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   ];
 
   // ICP cards — only overwrite if POST has data (preserves on accidental save)
-  if (!empty($d['icpCards'])) {
+  $icpInputs = array_filter($d['icpCards'] ?? [], function($k) { return is_numeric($k); }, ARRAY_FILTER_USE_KEY);
+  if (!empty($icpInputs)) {
     $icpCards = array_map(function($item) {
       return [
         'phase' => strip_tags($item['phase'] ?? ''),
@@ -71,10 +71,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'body' => $item['body'] ?? '',
         'quote' => $item['quote'] ?? '',
         'arrow' => strip_tags($item['arrow'] ?? ''),
+        'image' => strip_tags($item['image'] ?? ''),
         'route' => strip_tags($item['route'] ?? ''),
         'featured' => !empty($item['featured']),
       ];
-    }, $d['icpCards']);
+    }, $icpInputs);
 
     // Enrich with auto-route + featured defaults
     $routeMap = ['the speaker' => 'speaker', 'the authority' => 'authority', 'the legacy' => 'legacy'];
@@ -115,14 +116,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   ];
 
   // Testimonials — only overwrite if POST has data
-  if (!empty($d['testimonials'])) {
+  $testiInputs = array_filter($d['testimonials'] ?? [], function($k) { return is_numeric($k); }, ARRAY_FILTER_USE_KEY);
+  if (!empty($testiInputs)) {
     $data['testimonials'] = array_map(function($item) {
       return [
         'quote' => $item['quote'] ?? '',
         'name' => strip_tags($item['name'] ?? ''),
         'role' => strip_tags($item['role'] ?? ''),
+        'image' => strip_tags($item['image'] ?? ''),
       ];
-    }, $d['testimonials']);
+    }, $testiInputs);
   }
 
   saveJson('home.json', $data);
@@ -136,7 +139,6 @@ if ($msg) echo "<div class=\"msg\">$msg</div>";
 <form method="post">
   <div class="section-h">Hero</div>
   <div class="row">
-    <div class="field"><label>Eyebrow</label><input name="heroEyebrow" value="<?= htmlspecialchars($data['heroEyebrow'] ?? '') ?>"></div>
     <div class="field"><label>Stars</label><input name="heroStars" value="<?= htmlspecialchars($data['heroStars'] ?? '') ?>"></div>
   </div>
   <div class="field"><label>Title (HTML allowed: &lt;em&gt;, &lt;br/&gt;, &lt;span class="u"&gt;)</label>
@@ -236,6 +238,7 @@ if ($msg) echo "<div class=\"msg\">$msg</div>";
   <?php renderRepeater('icpCards', $data['icpCards'] ?? [], [
       ['phase', 'text', 'Phase label'],
       ['heading', 'text', 'Heading (HTML)'],
+      ['image', 'image', 'Banner image'],
       ['meta1', 'text', 'Meta 1'],
       ['meta2', 'text', 'Meta 2'],
       ['body', 'textarea', 'Body'],
@@ -276,6 +279,7 @@ if ($msg) echo "<div class=\"msg\">$msg</div>";
   <div class="field"><label>Eyebrow</label><input name="testimonialsEyebrow" value="<?= htmlspecialchars($data['testimonialsEyebrow'] ?? '') ?>"></div>
   <?php renderRepeater('testimonials', $data['testimonials'] ?? [], [
       ['quote', 'textarea', 'Quote'],
+      ['image', 'image', 'Photo'],
       ['name', 'text', 'Name'],
       ['role', 'text', 'Role'],
   ], ['label' => 'Testimonial Entries']); ?>

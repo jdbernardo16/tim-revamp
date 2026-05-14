@@ -1,13 +1,12 @@
 {
     "hideOriginalHero": true,
-    "heroEyebrow": "The True Influence Method",
     "heroTitle": "You're not missing<br/>a <span class=\"u\">message.</span><br/>You're missing <em>trust.</em>",
     "heroBody": "To gain influence, income, and impact — speaking doesn't cut it. It's time to <strong>lead</strong> with your message: turn your lived experience into a message people trust and follow.",
     "heroCtaPrimary": "Start with your story →",
     "heroCtaSecondary": "Free with Joanna · June 5",
-    "heroStars": "★★★★★",
-    "heroMeta1": "300+ leaders guided",
-    "heroMeta2": "Trusted by Fortune 500 execs &amp; founders",
+    "heroStars": "",
+    "heroMeta1": "10,000+ Leaders transformed",
+    "heroMeta2": "30+ Years of work",
     "heroImage": "assets/hero-portrait.jpg",
     "heroQuote": "\"We need the moment of your personal breakthrough that led to your special sauce.\"",
     "heroQuoteAuthor": "— Joanna",
@@ -198,6 +197,7 @@
             "body": "You know you have something to say — but you can't clearly say what defines you yet.",
             "quote": "\"I know what defines me.\"",
             "arrow": "→ Find my message",
+            "image": "uploads/_A3A0609_1778794120.webp",
             "route": "speaker",
             "featured": false
         },
@@ -209,6 +209,7 @@
             "body": "You know your work — but you over-explain it when it matters most. Your message loses energy as you explain it.",
             "quote": "\"My message lands.\"",
             "arrow": "→ Build my talk",
+            "image": "uploads/_A3A0203_1778793467.webp",
             "route": "authority",
             "featured": true
         },
@@ -220,6 +221,7 @@
             "body": "You've built something significant — but you are not clearly known for what you do <em>differently.</em>",
             "quote": "\"I'm known for something specific.\"",
             "arrow": "→ Define my legacy",
+            "image": "uploads/_A3A8357_1778793481.webp",
             "route": "legacy",
             "featured": false
         }
@@ -243,24 +245,27 @@
             "cta": "Save my seat →",
             "productId": "vault",
             "paid": false,
-            "image": "uploads/img1_1778768761.webp"
+            "image": "uploads/joanna2_1778769150.webp"
         }
     ],
     "testimonials": [
         {
             "quote": "I know Joanna's helped me with some of my speeches. I had a conference a couple like a year and a half ago, and she helped me kind of build the presentation.\"\"I now feel inspired and more clear in my why and my purpose.",
             "name": "Victoria Richardson",
-            "role": "Speaker · Leadership"
+            "role": "Speaker · Leadership",
+            "image": "uploads/VictoriaRichardson_1778792735.webp"
         },
         {
             "quote": "Biggest change in me is confidence. I found the part of me that is willing to tell it.\" \"And I've told Joanna, she's my changing myself into the wind. So, this is like taking off. It's like taking flight. I am so happy I did this. I found the part of me that is willing to tell it. That's what—I'm going to tell it from the place I am now.",
             "name": "LeQuisha Underwood",
-            "role": "Executive Director · Nonprofit"
+            "role": "Executive Director · Nonprofit",
+            "image": "uploads/LequishaUnderwood_1778792742.webp"
         },
         {
             "quote": "I've worked with Joanna to really understand what made me unique in the world of business. I felt really lost about what I could actually talk about and Joanna was able to help me go through several breakthroughs to be able to put together a talk that I feel will be able to impact someone's life.",
             "name": "Kendi Brown",
-            "role": "Founder · Business Strategy"
+            "role": "Founder · Business Strategy",
+            "image": "uploads/KendiBrown_1778792751.webp"
         }
     ]
 }

@@ -31,15 +31,45 @@
     "eventsEyebrow": "Recent stages, TV &amp; podcasts",
     "eventsTitle": "Where she's <span class=\"u\">been.</span>",
     "eventsLead": "Selected appearances from the last few years.",
-    "events": [
+    "featuredOn": [
+        { "src": "assets/Featured On/FORBES.png", "label": "Forbes" },
+        { "src": "assets/Featured On/USA TODAY 1.png", "label": "USA Today" },
+        { "src": "assets/Featured On/USA TODAY 2.png", "label": "USA Today" },
         {
-            "type": "KEYNOTE",
-            "name": "Forbes 30/50 Summit",
-            "where": "Abu Dhabi · 2024",
-            "icon": "F"
+            "src": "assets/Featured On/Top Talent Agency.jpg",
+            "label": "Top Talent Agency"
+        },
+        {
+            "src": "assets/Featured On/Sonoran Living.jpg",
+            "label": "Sonoran Living"
+        },
+        {
+            "src": "assets/Featured On/SHE MEANS BUSINESS.jpg",
+            "label": "She Means Business"
+        },
+        { "src": "assets/Featured On/SCALE UP.webp", "label": "Scale Up" },
+        {
+            "src": "assets/Featured On/Phoenix Business Journal.jpg",
+            "label": "Phoenix Business Journal"
+        },
+        { "src": "assets/Featured On/Makers Bar.jpg", "label": "Makers Bar" },
+        {
+            "src": "assets/Featured On/Morning Blend.jpg",
+            "label": "Morning Blend"
+        },
+        {
+            "src": "assets/Featured On/MORNING BLEND 2.jpg",
+            "label": "Morning Blend"
+        },
+        {
+            "src": "assets/Featured On/FORBES BUSINESS COUNCIL.jpg",
+            "label": "Forbes Business Council"
+        },
+        {
+            "src": "assets/Featured On/CHANDLER CHAMBER.jpg",
+            "label": "Chandler Chamber"
         }
     ],
-    "eventsCta": "See full press archive →",
     "talksEyebrow": "Signature talks",
     "talksTitle": "Pick the <span class=\"u\">talk.</span>",
     "talksLead": "Three rooms, three lengths — each adapted to your audience.",
@@ -63,7 +93,7 @@
         "Speaker kit + bio + headshots provided on confirmation"
     ],
     "inquiryEmailLabel": "Or email direct:",
-    "inquiryEmail": "speaking@trueinfluencemethod.com",
+    "inquiryEmail": "info@trueinfluencemethod.com",
     "relatedEyebrow": "Not booking — exploring?",
     "relatedTitle": "Hear Joanna live · <em>free</em> · June 5.",
     "relatedCta": "Save my seat →",

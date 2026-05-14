@@ -154,7 +154,7 @@ function renderRepeater(string $name, array $items, array $fields, array $opts =
                 <div class="repeater-item-fields">
                     <?php foreach ($fields as $f):
                         list($key, $type, $label) = $f;
-                        $inputName = htmlspecialchars($name . '[0][' . $key . ']');
+                        $inputName = htmlspecialchars($name . '[__INDEX__][' . $key . ']');
                         $inputId = 'repeater_' . $name . '__INDEX__' . $key;
                     ?>
                     <div class="field">

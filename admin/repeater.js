@@ -63,7 +63,7 @@ function reindex(wrapper) {
         var inputs = items[i].querySelectorAll('[name]');
         for (var j = 0; j < inputs.length; j++) {
             var old = inputs[j].getAttribute('name');
-            var newName = old.replace(/^([^\[]+)\[\d+\]\[/, '$1[' + i + '][');
+            var newName = old.replace(/^([^\[]+)\[(\d+|__INDEX__)\]\[/, '$1[' + i + '][');
             inputs[j].setAttribute('name', newName);
             var id = inputs[j].getAttribute('id');
             if (id) {

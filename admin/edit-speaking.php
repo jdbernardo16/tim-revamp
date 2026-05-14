@@ -21,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $data['eventsEyebrow'] = strip_tags($d['eventsEyebrow']);
   $data['eventsTitle'] = $d['eventsTitle'];
   $data['eventsLead'] = strip_tags($d['eventsLead']);
-  $data['eventsCta'] = strip_tags($d['eventsCta']);
   $data['talksEyebrow'] = strip_tags($d['talksEyebrow']);
   $data['talksTitle'] = $d['talksTitle'];
   $data['talksLead'] = strip_tags($d['talksLead']);
@@ -49,18 +48,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
   }
 
-  // Events
-  $data['events'] = [];
-  foreach (explode("\n---\n", $d['events']) as $block) {
-    $lines = array_map('trim', explode("\n", $block));
-    if (count($lines) >= 3) {
-      $data['events'][] = [
-        'type' => strip_tags($lines[0]),
-        'name' => strip_tags($lines[1]),
-        'where' => strip_tags($lines[2]),
-        'icon' => strip_tags($lines[3] ?? ''),
+  // Featured On
+  $featInputs = array_filter($d['featuredOn'] ?? [], function($k) { return is_numeric($k); }, ARRAY_FILTER_USE_KEY);
+  if (!empty($featInputs)) {
+    $data['featuredOn'] = array_map(function($item) {
+      return [
+        'src' => strip_tags($item['src'] ?? ''),
+        'label' => strip_tags($item['label'] ?? ''),
       ];
-    }
+    }, $featInputs);
   }
 
   // Talks
@@ -115,21 +111,16 @@ if ($msg) echo "<div class=\"msg\">$msg</div>";
   <div class="field"><label>Title (HTML)</label><textarea name="reelTitle" rows="2"><?= htmlspecialchars($data['reelTitle'] ?? '') ?></textarea></div>
   <div class="field"><label>Muted link text</label><input name="reelMutedLink" value="<?= htmlspecialchars($data['reelMutedLink'] ?? '') ?>"></div>
 
-  <div class="section-h">Past Events</div>
+  <div class="section-h">Past Events / Featured On</div>
   <div class="row">
     <div class="field"><label>Eyebrow</label><input name="eventsEyebrow" value="<?= htmlspecialchars($data['eventsEyebrow'] ?? '') ?>"></div>
     <div class="field"><label>Lead</label><input name="eventsLead" value="<?= htmlspecialchars($data['eventsLead'] ?? '') ?>"></div>
   </div>
   <div class="field"><label>Title (HTML)</label><textarea name="eventsTitle" rows="2"><?= htmlspecialchars($data['eventsTitle'] ?? '') ?></textarea></div>
-  <div class="field"><label>Events CTA</label><input name="eventsCta" value="<?= htmlspecialchars($data['eventsCta'] ?? '') ?>"></div>
-  <div class="field"><label>Events (type \n name \n where \n icon, separate with ---)</label>
-    <textarea name="events" rows="10"><?php
-      $ev = $data['events'] ?? [];
-      $out = [];
-      foreach ($ev as $e) $out[] = ($e['type']??'') . "\n" . ($e['name']??'') . "\n" . ($e['where']??'') . "\n" . ($e['icon']??'');
-      echo htmlspecialchars(implode("\n---\n", $out));
-    ?></textarea>
-  </div>
+  <?php renderRepeater('featuredOn', $data['featuredOn'] ?? [], [
+      ['src', 'image', 'Logo image'],
+      ['label', 'text', 'Label'],
+  ], ['label' => 'Featured On Logos', 'minItems' => 0]); ?>
 
   <div class="section-h">Signature Talks</div>
   <div class="row">
