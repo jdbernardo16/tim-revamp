@@ -233,7 +233,7 @@
             "cta": "Get it now →",
             "productId": "dollar-message",
             "paid": true,
-            "image": "assets/retreat-moment.jpg"
+            "image": "uploads/img4_1778768792.webp"
         },
         {
             "eyebrow": "Free · Live with Joanna",
@@ -243,17 +243,17 @@
             "cta": "Save my seat →",
             "productId": "vault",
             "paid": false,
-            "image": "assets/hero-portrait.jpg"
+            "image": "uploads/img1_1778768761.webp"
         }
     ],
     "testimonials": [
         {
-            "quote": "I know Joanna's helped me with some of my speeches. I had a conference a couple like a year and a half ago, and she helped me kind of build the presentation.\"“I now feel inspired and more clear in my why and my purpose.",
+            "quote": "I know Joanna's helped me with some of my speeches. I had a conference a couple like a year and a half ago, and she helped me kind of build the presentation.\"\"I now feel inspired and more clear in my why and my purpose.",
             "name": "Victoria Richardson",
             "role": "Speaker · Leadership"
         },
         {
-            "quote": "Biggest change in me is confidence. I found the part of me that is willing to tell it.” \"And I've told Joanna, she's my changing myself into the wind. So, this is like taking off. It's like taking flight. I am so happy I did this. I found the part of me that is willing to tell it. That's what—I'm going to tell it from the place I am now.",
+            "quote": "Biggest change in me is confidence. I found the part of me that is willing to tell it.\" \"And I've told Joanna, she's my changing myself into the wind. So, this is like taking off. It's like taking flight. I am so happy I did this. I found the part of me that is willing to tell it. That's what—I'm going to tell it from the place I am now.",
             "name": "LeQuisha Underwood",
             "role": "Executive Director · Nonprofit"
         },

@@ -60,32 +60,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     'closerCtaSecondary' => strip_tags($d['closerCtaSecondary']),
   ];
 
-  // ICP cards
-  $icpCards = array_map(function($item) {
-    return [
-      'phase' => strip_tags($item['phase'] ?? ''),
-      'heading' => $item['heading'] ?? '',
-      'meta1' => strip_tags($item['meta1'] ?? ''),
-      'meta2' => strip_tags($item['meta2'] ?? ''),
-      'body' => $item['body'] ?? '',
-      'quote' => $item['quote'] ?? '',
-      'arrow' => strip_tags($item['arrow'] ?? ''),
-      'route' => strip_tags($item['route'] ?? ''),
-      'featured' => !empty($item['featured']),
-    ];
-  }, $d['icpCards'] ?? []);
-  
-  // Enrich with auto-route + featured defaults
-  foreach ($icpCards as $i => $card) {
-    if (empty($card['route'])) {
-      $slug = strtolower(trim(preg_replace('/[^a-zA-Z0-9]/', '-', $card['phase'])));
-      $icpCards[$i]['route'] = $slug ?: "card-$i";
+  // ICP cards — only overwrite if POST has data (preserves on accidental save)
+  if (!empty($d['icpCards'])) {
+    $icpCards = array_map(function($item) {
+      return [
+        'phase' => strip_tags($item['phase'] ?? ''),
+        'heading' => $item['heading'] ?? '',
+        'meta1' => strip_tags($item['meta1'] ?? ''),
+        'meta2' => strip_tags($item['meta2'] ?? ''),
+        'body' => $item['body'] ?? '',
+        'quote' => $item['quote'] ?? '',
+        'arrow' => strip_tags($item['arrow'] ?? ''),
+        'route' => strip_tags($item['route'] ?? ''),
+        'featured' => !empty($item['featured']),
+      ];
+    }, $d['icpCards']);
+
+    // Enrich with auto-route + featured defaults
+    foreach ($icpCards as $i => $card) {
+      if (empty($card['route'])) {
+        $slug = strtolower(trim(preg_replace('/[^a-zA-Z0-9]/', '-', $card['phase'])));
+        $icpCards[$i]['route'] = $slug ?: "card-$i";
+      }
+      if (count($icpCards) >= 3) {
+        $icpCards[$i]['featured'] = ($i === 1);
+      }
     }
-    if (count($icpCards) >= 3) {
-      $icpCards[$i]['featured'] = ($i === 1);
-    }
+    $data['icpCards'] = $icpCards;
   }
-  $data['icpCards'] = $icpCards;
 
   // Front door
   $data['frontDoor'] = [
@@ -111,14 +113,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ],
   ];
 
-  // Testimonials
-  $data['testimonials'] = array_map(function($item) {
-    return [
-      'quote' => $item['quote'] ?? '',
-      'name' => strip_tags($item['name'] ?? ''),
-      'role' => strip_tags($item['role'] ?? ''),
-    ];
-  }, $d['testimonials'] ?? []);
+  // Testimonials — only overwrite if POST has data
+  if (!empty($d['testimonials'])) {
+    $data['testimonials'] = array_map(function($item) {
+      return [
+        'quote' => $item['quote'] ?? '',
+        'name' => strip_tags($item['name'] ?? ''),
+        'role' => strip_tags($item['role'] ?? ''),
+      ];
+    }, $d['testimonials']);
+  }
 
   saveJson('home.json', $data);
   $msg = 'Homepage saved.';

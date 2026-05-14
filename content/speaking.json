@@ -1,81 +1,74 @@
 {
-  "heroEyebrow": "Book Joanna",
-  "heroTitle": "Invite Joanna to your <span class=\"u\">stage.</span>",
-  "heroBody": "Keynotes, fireside chats, TV appearances, and intimate executive rooms. Joanna speaks to leaders ready to find the message that actually moves their work forward.",
-  "heroCtaPrimary": "Send a booking inquiry \u2192",
-  "heroCtaSecondary": "Hear her live \u00b7 June 5 free",
-  "heroCtaSecondaryRoute": "product",
-  "heroCtaSecondaryParams": { "id": "vault" },
-  "heroImage": "assets/hero-portrait.jpg",
-  "stats": [
-    { "number": "150+", "label": "stages worldwide" },
-    { "number": "4", "label": "TEDx appearances" },
-    { "number": "12", "label": "countries" }
-  ],
-  "reelEyebrow": "The reel",
-  "reelTitle": "Two minutes of <em>her</em> in a room.",
-  "reelImage": "",
-  "reelMuted": "Want a higher-res reel + bio + headshots for your event page?",
-  "reelMutedLink": "Download the speaker kit \u2192",
-  "eventsEyebrow": "Recent stages, TV &amp; podcasts",
-  "eventsTitle": "Where she's <span class=\"u\">been.</span>",
-  "eventsLead": "Selected appearances from the last few years.",
-  "events": [
-    { "type": "KEYNOTE", "name": "Forbes 30/50 Summit", "where": "Abu Dhabi \u00b7 2024", "icon": "F" },
-    { "type": "PANEL", "name": "Aspen Institute", "where": "Aspen \u00b7 2024", "icon": "A" },
-    { "type": "KEYNOTE", "name": "Lesbians Who Tech", "where": "San Francisco \u00b7 2023", "icon": "LWT" },
-    { "type": "TV", "name": "CBS Mornings", "where": "New York \u00b7 2023", "icon": "CBS" },
-    { "type": "PODCAST", "name": "The Tim Ferriss Show", "where": "Ep. 642 \u00b7 2023", "icon": "TF" },
-    { "type": "KEYNOTE", "name": "SXSW Featured Session", "where": "Austin \u00b7 2023", "icon": "SX" },
-    { "type": "TV", "name": "Good Morning America", "where": "New York \u00b7 2022", "icon": "GMA" },
-    { "type": "KEYNOTE", "name": "Watermark Conference", "where": "Silicon Valley \u00b7 2022", "icon": "WM" },
-    { "type": "PODCAST", "name": "How I Built This", "where": "Ep. 410 \u00b7 2022", "icon": "HIB" },
-    { "type": "KEYNOTE", "name": "TEDxBoulder", "where": "Boulder \u00b7 2021", "icon": "TEDx" },
-    { "type": "TV", "name": "The Today Show", "where": "New York \u00b7 2021", "icon": "NBC" },
-    { "type": "PANEL", "name": "Cannes Lions", "where": "Cannes \u00b7 2019", "icon": "CL" }
-  ],
-  "eventsCta": "See full press archive \u2192",
-  "talksEyebrow": "Signature talks",
-  "talksTitle": "Pick the <span class=\"u\">talk.</span>",
-  "talksLead": "Three rooms, three lengths \u2014 each adapted to your audience.",
-  "talks": [
-    {
-      "title": "Speak Your Story. Create Influence.",
-      "time": "45\u201360 min",
-      "ideal": "Founders, executives, leadership offsites",
-      "body": "Joanna\u2019s flagship keynote. Why better delivery doesn\u2019t fix a credibility problem \u2014 and the one shift that does."
+    "heroEyebrow": "Book Joanna",
+    "heroTitle": "Invite Joanna to your <span class=\"u\">stage.</span>",
+    "heroBody": "Keynotes, fireside chats, TV appearances, and intimate executive rooms. Joanna speaks to leaders ready to find the message that actually moves their work forward.",
+    "heroCtaPrimary": "Send a booking inquiry →",
+    "heroCtaSecondary": "Hear her live · June 5 free",
+    "heroCtaSecondaryRoute": "product",
+    "heroCtaSecondaryParams": {
+        "id": "vault"
     },
-    {
-      "title": "The Moment That Made You.",
-      "time": "30\u201345 min",
-      "ideal": "Women\u2019s conferences, leadership programs",
-      "body": "A live story-mining demo on stage. One volunteer, fifteen minutes, an unforgettable shift."
-    },
-    {
-      "title": "Influence Is a Clarity Problem.",
-      "time": "20\u201330 min",
-      "ideal": "TEDx, summits, opening keynotes",
-      "body": "The short, punchy version. The thesis behind the True Influence Method, in a single talk."
-    }
-  ],
-  "testimonialQuote": "We've booked 60+ keynotes over five years. Joanna got the only standing ovation we've ever had \u2014 and she did it with a single sentence the room couldn't stop repeating.",
-  "testimonialBy": "Marcus L. \u00b7 Conference Director, Watermark",
-  "inquiryEyebrow": "Booking inquiry",
-  "inquiryTitle": "Tell us about <span class=\"u\">your event.</span>",
-  "inquiryBody": "Joanna's team reviews every request personally. The more specific you can be, the faster we can confirm fit and fees.",
-  "inquiryList": [
-    "We respond within <strong>48 business hours</strong>",
-    "Virtual, in-person, hybrid \u2014 all considered",
-    "Honorariums vary by audience, length, and travel",
-    "Speaker kit + bio + headshots provided on confirmation"
-  ],
-  "inquiryEmailLabel": "Or email direct:",
-  "inquiryEmail": "speaking@trueinfluencemethod.com",
-  "relatedEyebrow": "Not booking \u2014 exploring?",
-  "relatedTitle": "Hear Joanna live \u00b7 <em>free</em> \u00b7 June 5.",
-  "relatedCta": "Save my seat \u2192",
-  "confirmedImage": "",
-  "confirmedEyebrow": "Inquiry received",
-  "confirmedTitle": "We've got it.",
-  "confirmedBody": "Joanna's team reviews every booking request personally and will reply within <strong>48 business hours</strong>. If your date is tight, reply to the confirmation email and we'll prioritize."
+    "heroImage": "uploads/joanna2_1778769150.webp",
+    "stats": [
+        {
+            "number": "150+",
+            "label": "stages worldwide"
+        },
+        {
+            "number": "4",
+            "label": "TEDx appearances"
+        },
+        {
+            "number": "12",
+            "label": "countries"
+        }
+    ],
+    "reelEyebrow": "The reel",
+    "reelTitle": "Two minutes of <em>her</em> in a room.",
+    "reelImage": "uploads/img8_1778769165.webp",
+    "reelMuted": "Want a higher-res reel + bio + headshots for your event page?",
+    "reelMutedLink": "Download the speaker kit →",
+    "eventsEyebrow": "Recent stages, TV &amp; podcasts",
+    "eventsTitle": "Where she's <span class=\"u\">been.</span>",
+    "eventsLead": "Selected appearances from the last few years.",
+    "events": [
+        {
+            "type": "KEYNOTE",
+            "name": "Forbes 30/50 Summit",
+            "where": "Abu Dhabi · 2024",
+            "icon": "F"
+        }
+    ],
+    "eventsCta": "See full press archive →",
+    "talksEyebrow": "Signature talks",
+    "talksTitle": "Pick the <span class=\"u\">talk.</span>",
+    "talksLead": "Three rooms, three lengths — each adapted to your audience.",
+    "talks": [
+        {
+            "title": "Speak Your Story. Create Influence.",
+            "time": "45–60 min",
+            "ideal": "Founders, executives, leadership offsites",
+            "body": "Joanna’s flagship keynote. Why better delivery doesn’t fix a credibility problem — and the one shift that does."
+        }
+    ],
+    "testimonialQuote": "We've booked 60+ keynotes over five years. Joanna got the only standing ovation we've ever had — and she did it with a single sentence the room couldn't stop repeating.",
+    "testimonialBy": "Marcus L. · Conference Director, Watermark",
+    "inquiryEyebrow": "Booking inquiry",
+    "inquiryTitle": "Tell us about <span class=\"u\">your event.</span>",
+    "inquiryBody": "Joanna's team reviews every request personally. The more specific you can be, the faster we can confirm fit and fees.",
+    "inquiryList": [
+        "We respond within <strong>48 business hours</strong>",
+        "Virtual, in-person, hybrid — all considered",
+        "Honorariums vary by audience, length, and travel",
+        "Speaker kit + bio + headshots provided on confirmation"
+    ],
+    "inquiryEmailLabel": "Or email direct:",
+    "inquiryEmail": "speaking@trueinfluencemethod.com",
+    "relatedEyebrow": "Not booking — exploring?",
+    "relatedTitle": "Hear Joanna live · <em>free</em> · June 5.",
+    "relatedCta": "Save my seat →",
+    "confirmedImage": "",
+    "confirmedEyebrow": "Inquiry received",
+    "confirmedTitle": "We've got it.",
+    "confirmedBody": "Joanna's team reviews every booking request personally and will reply within <strong>48 business hours</strong>. If your date is tight, reply to the confirmation email and we'll prioritize."
 }

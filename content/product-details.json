@@ -1,121 +1,121 @@
 {
-  "sidebarImage": "assets/retreat-moment.jpg",
-  "phase-1": {
-    "youBuild": [
-      "Your defining moment (written + spoken)",
-      "Your deeper why (clear, concise statement)",
-      "Your first leadership message (1\u20132 sentences)",
-      "Your unique differentiator"
-    ],
-    "youExperience": [
-      "A safe space to say your story for the first time",
-      "Peer feedback and refinement",
-      "A live 3\u20135 minute story share"
-    ],
-    "youLeaveWith": [
-      "Clarity of identity and voice",
-      "A message ready for public use",
-      "\"I know what defines me and why it matters.\""
-    ]
-  },
-  "phase-2": {
-    "youBuild": [
-      "A 7-minute signature talk",
-      "A clear problem \u2192 solution message",
-      "Emotional connection points",
-      "A defined call to action"
-    ],
-    "youExperience": [
-      "Live coaching with Joanna",
-      "Retreat speaking opportunity (featured)",
-      "Real-time feedback and refinement"
-    ],
-    "youLeaveWith": [
-      "A talk that lands",
-      "A message that moves people to action",
-      "\"I can clearly communicate a message that lands.\""
-    ]
-  },
-  "phase-3": {
-    "youBuild": [
-      "A refined, repeatable signature message",
-      "Your thought-leader perspective",
-      "Your \"special sauce\" \u2014 what you do differently",
-      "A one-liner people can repeat"
-    ],
-    "youExperience": [
-      "Speaker cohort training + private sessions",
-      "Full speaking reel + 1-minute social clip",
-      "Professional video + photos"
-    ],
-    "youLeaveWith": [
-      "A keynote-level talk",
-      "A message people remember and repeat",
-      "\"I am known for something specific and valuable.\""
-    ]
-  },
-  "phase-4": {
-    "youBuild": [
-      "Your leadership framework",
-      "A team communication system",
-      "A mentorship structure based on your message"
-    ],
-    "youExperience": [
-      "Psychological safety and trust inside your team",
-      "A repeatable system others can lead through",
-      "A business strategy to scale"
-    ],
-    "youLeaveWith": [
-      "A healed leadership model that drives performance",
-      "A team that operates from your vision",
-      "\"I build leaders, not just results.\""
-    ]
-  },
-  "phase-5": {
-    "youBuild": [
-      "Your legacy blueprint",
-      "Your impact thesis",
-      "Your succession plan"
-    ],
-    "youExperience": [
-      "Voice + wealth + long-term contribution, aligned",
-      "A message with generational impact",
-      "A structure that continues beyond your lifetime"
-    ],
-    "youLeaveWith": [
-      "A clear plan for your long-term influence",
-      "A legacy that is designed, not left to chance",
-      "\"My life's work carries beyond me.\""
-    ]
-  },
-  "breakthrough": {
-    "youBuild": [
-      "Clear direction on your message",
-      "A sharper articulation of what you do",
-      "Immediate clarity on your next step"
-    ],
-    "youExperience": [
-      "The shift from explaining \u2192 knowing",
-      "What your voice sounds like when it's aligned"
-    ],
-    "youLeaveWith": [
-      "A clear next step you actually trust"
-    ]
-  },
-  "four-session": {
-    "youBuild": [
-      "Your defining moment (the moment that shaped your work)",
-      "Your deeper why",
-      "Your first leadership message",
-      "Your unique differentiator"
-    ],
-    "youExperience": [
-      "Four private sessions with Joanna",
-      "Direct feedback as your message is built"
-    ],
-    "youLeaveWith": [
-      "A message you can actually say out loud",
-      "Clarity on what defines you and why it matters"
-    ]
-  }
+    "sidebarImage": "uploads/img5_1778769034.webp",
+    "phase-1": {
+        "youBuild": [
+            "Your defining moment (written + spoken)",
+            "Your deeper why (clear, concise statement)",
+            "Your first leadership message (1–2 sentences)",
+            "Your unique differentiator"
+        ],
+        "youExperience": [
+            "A safe space to say your story for the first time",
+            "Peer feedback and refinement",
+            "A live 3–5 minute story share"
+        ],
+        "youLeaveWith": [
+            "Clarity of identity and voice",
+            "A message ready for public use",
+            "\"I know what defines me and why it matters.\""
+        ]
+    },
+    "phase-2": {
+        "youBuild": [
+            "A 7-minute signature talk",
+            "A clear problem → solution message",
+            "Emotional connection points",
+            "A defined call to action"
+        ],
+        "youExperience": [
+            "Live coaching with Joanna",
+            "Retreat speaking opportunity (featured)",
+            "Real-time feedback and refinement"
+        ],
+        "youLeaveWith": [
+            "A talk that lands",
+            "A message that moves people to action",
+            "\"I can clearly communicate a message that lands.\""
+        ]
+    },
+    "phase-3": {
+        "youBuild": [
+            "A refined, repeatable signature message",
+            "Your thought-leader perspective",
+            "Your \"special sauce\" — what you do differently",
+            "A one-liner people can repeat"
+        ],
+        "youExperience": [
+            "Speaker cohort training + private sessions",
+            "Full speaking reel + 1-minute social clip",
+            "Professional video + photos"
+        ],
+        "youLeaveWith": [
+            "A keynote-level talk",
+            "A message people remember and repeat",
+            "\"I am known for something specific and valuable.\""
+        ]
+    },
+    "phase-4": {
+        "youBuild": [
+            "Your leadership framework",
+            "A team communication system",
+            "A mentorship structure based on your message"
+        ],
+        "youExperience": [
+            "Psychological safety and trust inside your team",
+            "A repeatable system others can lead through",
+            "A business strategy to scale"
+        ],
+        "youLeaveWith": [
+            "A healed leadership model that drives performance",
+            "A team that operates from your vision",
+            "\"I build leaders, not just results.\""
+        ]
+    },
+    "phase-5": {
+        "youBuild": [
+            "Your legacy blueprint",
+            "Your impact thesis",
+            "Your succession plan"
+        ],
+        "youExperience": [
+            "Voice + wealth + long-term contribution, aligned",
+            "A message with generational impact",
+            "A structure that continues beyond your lifetime"
+        ],
+        "youLeaveWith": [
+            "A clear plan for your long-term influence",
+            "A legacy that is designed, not left to chance",
+            "\"My life's work carries beyond me.\""
+        ]
+    },
+    "breakthrough": {
+        "youBuild": [
+            "Clear direction on your message",
+            "A sharper articulation of what you do",
+            "Immediate clarity on your next step"
+        ],
+        "youExperience": [
+            "The shift from explaining → knowing",
+            "What your voice sounds like when it's aligned"
+        ],
+        "youLeaveWith": [
+            "A clear next step you actually trust"
+        ]
+    },
+    "four-session": {
+        "youBuild": [
+            "Your defining moment (the moment that shaped your work)",
+            "Your deeper why",
+            "Your first leadership message",
+            "Your unique differentiator"
+        ],
+        "youExperience": [
+            "Four private sessions with Joanna",
+            "Direct feedback as your message is built"
+        ],
+        "youLeaveWith": [
+            "A message you can actually say out loud",
+            "Clarity on what defines you and why it matters"
+        ]
+    }
 }

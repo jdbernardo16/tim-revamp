@@ -1,106 +1,218 @@
 {
-  "about": {
-    "image": "assets/bio-photo.jpg",
-    "eyebrow": "About",
-    "title": "Hi, I'm <span class=\"u\">Joanna.</span>",
-    "lead": "I help leaders find the words for the work they already do \u2014 and build the rooms where those words land.",
-    "body": "I've spent two decades on stages and in private rooms with founders, executives, and women rebuilding their voice after the company they built outgrew the person they used to be. What I teach isn't speaking. It's <em>the moment</em> \u2014 the one that shaped what you actually know, and how to say it so people trust you immediately.",
-    "quote": "Influence is not a volume problem. It's a clarity problem.",
-    "quoteBy": "Joanna",
-    "journeyEyebrow": "The journey \u00b7 a short version",
-    "timeline": [
-      { "year": "2008", "text": "First stage. Terrified. Discovered story-mining by accident." },
-      { "year": "2013", "text": "Started coaching one woman in a caf\u00e9. Then a hundred." },
-      { "year": "2018", "text": "First True Influence retreat \u2014 8 women, one room, real results." },
-      { "year": "2023", "text": "The method became the curriculum. 300+ leaders guided." },
-      { "year": "2026", "text": "This. You. Your next chapter." }
-    ],
-    "closerTitle": "Ready when you are.",
-    "closerCtaPrimary": "Choose where you are \u2192",
-    "closerCtaSecondary": "Meet me first \u2014 free June 5",
-    "closerCtaSecondaryRoute": "product",
-    "closerCtaSecondaryParams": { "id": "vault" }
-  },
-  "journey": {
-    "eyebrow": "The Journey",
-    "title": "How I found <span class=\"u\">the work.</span>",
-    "lead": "The short version. The longer one I tell on stage.",
-    "chapters": [
-      { "year": "Before", "text": "I was good at speaking. I was bad at being heard. There is a difference and it cost me a decade." },
-      { "year": "The room", "text": "A woman across a caf\u00e9 asked me one question. I told her a story I had never said out loud. She cried. So did I. That was the moment I knew what I actually do." },
-      { "year": "The retreat", "text": "Eight women, four days, one room. No slides. No framework. Just the moment each of them had been talking around for years. They left with a voice the room could feel. I have been running the method ever since." },
-      { "year": "Now", "text": "Hundreds of leaders. Stages, boardrooms, kitchens at 11pm. The work is the same. The story behind your solution is the only thing that makes you trusted." },
-      { "year": "Next", "text": "You. Whatever moment you have been talking around \u2014 let us name it." }
-    ],
-    "closerQuote": "Influence is not a volume problem. It is a clarity problem.",
-    "closerQuoteBy": "Joanna",
-    "closerTitle": "Ready to find yours?",
-    "closerCtaPrimary": "Choose where you are \u2192",
-    "closerCtaSecondary": "Meet me first \u00b7 free June 5",
-    "closerCtaSecondaryRoute": "product",
-    "closerCtaSecondaryParams": { "id": "vault" }
-  },
-  "stories": {
-    "eyebrow": "Success Stories",
-    "title": "The <span class=\"u\">receipts.</span>",
-    "lead": "Real women, real results \u2014 across every phase of the method.",
-    "items": [
-      { "name": "Maya", "role": "Founder \u00b7 Tech", "quote": "Booked 3 keynotes 6 weeks after.", "body": "I came in unsure of my voice. I left with a message I could repeat \u2014 and three booked stages within six weeks.", "phase": "Phase 2", "image": "" },
-      { "name": "Ren\u00e9e", "role": "VP \u00b7 Media", "quote": "Got the board to listen, finally.", "body": "Twenty years of context-setting in meetings. Joanna helped me cut to the moment. The board moved on the next pitch.", "phase": "Phase 2", "image": "" },
-      { "name": "Jules", "role": "Coach", "quote": "First paid talk happened here.", "body": "I had been doing free stages for two years. After Phase 1 I priced my talk \u2014 and somebody paid it the first time I sent it out.", "phase": "Phase 1", "image": "" },
-      { "name": "Devi", "role": "Producer", "quote": "Paid for itself in one introduction.", "body": "Sat next to a network exec at the retreat. Two months later, my show was greenlit. None of that happens without the message I built that week.", "phase": "Phase 1", "image": "" },
-      { "name": "Aiyana", "role": "Founder \u00b7 Wellness", "quote": "Reset my whole next decade.", "body": "I had been telling the same origin story for ten years. Joanna found the one underneath it. I rebuilt the whole brand around what I actually do differently.", "phase": "Phase 3", "image": "" },
-      { "name": "Sara", "role": "Exec", "quote": "The clearest yes I have ever given myself.", "body": "The first time I felt my own voice in a room \u2014 instead of an executive translation of myself \u2014 was at this retreat.", "phase": "Phase 1", "image": "" }
-    ],
-    "closerTitle": "Your story is next.",
-    "closerCta": "Choose where you are \u2192"
-  },
-  "faq": {
-    "eyebrow": "FAQ",
-    "title": "Real <span class=\"u\">questions.</span>",
-    "sections": [
-      {
-        "heading": "Getting started",
+    "about": {
+        "image": "uploads/joanna-hero_1778768661.webp",
+        "eyebrow": "About",
+        "title": "Hi, I'm <span class=\"u\">Joanna.</span>",
+        "lead": "I help leaders find the words for the work they already do — and build the rooms where those words land.",
+        "body": "I've spent two decades on stages and in private rooms with founders, executives, and women rebuilding their voice after the company they built outgrew the person they used to be. What I teach isn't speaking. It's <em>the moment</em> — the one that shaped what you actually know, and how to say it so people trust you immediately.",
+        "quote": "Influence is not a volume problem. It's a clarity problem.",
+        "quoteBy": "Joanna",
+        "journeyEyebrow": "The journey · a short version",
+        "timeline": [
+            {
+                "year": "2008",
+                "text": "First stage. Terrified. Discovered story-mining by accident."
+            },
+            {
+                "year": "2013",
+                "text": "Started coaching one woman in a café. Then a hundred."
+            },
+            {
+                "year": "2018",
+                "text": "First True Influence retreat — 8 women, one room, real results."
+            },
+            {
+                "year": "2023",
+                "text": "The method became the curriculum. 300+ leaders guided."
+            },
+            {
+                "year": "2026",
+                "text": "This. You. Your next chapter."
+            }
+        ],
+        "closerTitle": "Ready when you are.",
+        "closerCtaPrimary": "Choose where you are →",
+        "closerCtaSecondary": "Meet me first — free June 5",
+        "closerCtaSecondaryRoute": "product",
+        "closerCtaSecondaryParams": {
+            "id": "vault"
+        }
+    },
+    "journey": {
+        "eyebrow": "The Journey",
+        "title": "How I found <span class=\"u\">the work.</span>",
+        "lead": "The short version. The longer one I tell on stage.",
+        "chapters": [
+            {
+                "year": "Before",
+                "text": "I was good at speaking. I was bad at being heard. There is a difference and it cost me a decade."
+            },
+            {
+                "year": "The room",
+                "text": "A woman across a café asked me one question. I told her a story I had never said out loud. She cried. So did I. That was the moment I knew what I actually do."
+            },
+            {
+                "year": "The retreat",
+                "text": "Eight women, four days, one room. No slides. No framework. Just the moment each of them had been talking around for years. They left with a voice the room could feel. I have been running the method ever since."
+            },
+            {
+                "year": "Now",
+                "text": "Hundreds of leaders. Stages, boardrooms, kitchens at 11pm. The work is the same. The story behind your solution is the only thing that makes you trusted."
+            },
+            {
+                "year": "Next",
+                "text": "You. Whatever moment you have been talking around — let us name it."
+            }
+        ],
+        "closerQuote": "Influence is not a volume problem. It is a clarity problem.",
+        "closerQuoteBy": "Joanna",
+        "closerTitle": "Ready to find yours?",
+        "closerCtaPrimary": "Choose where you are →",
+        "closerCtaSecondary": "Meet me first · free June 5",
+        "closerCtaSecondaryRoute": "product",
+        "closerCtaSecondaryParams": {
+            "id": "vault"
+        }
+    },
+    "stories": {
+        "eyebrow": "Success Stories",
+        "title": "The <span class=\"u\">receipts.</span>",
+        "lead": "Real women, real results — across every phase of the method.",
         "items": [
-          { "q": "Where do I begin?", "a": "If you're new, start with the free Vault session (June 5) or the $29 Dollar Message. If you already know your phase, go straight to the path that fits \u2014 Speaker, Authority, or Legacy.", "defaultOpen": true },
-          { "q": "Do I have to apply?", "a": "No application for Speaker (Phase 1) or Authority (Phase 2/3). The Legacy path is a private conversation first \u2014 you submit a request and Joanna reaches out within 48 hours." },
-          { "q": "What if I'm between phases?", "a": "Take the 5-minute assessment or come to the Vault \u2014 Joanna can place you in real time." }
-        ]
-      },
-      {
-        "heading": "Tell Your Story (Phase 1)",
-        "items": [
-          { "q": "Is the retreat included?", "a": "Yes. The in-person retreat is included in the $3,200 program price. Travel and lodging are separate." },
-          { "q": "When is the next retreat?", "a": "The next retreat dates are posted on the program page \u2014 limited to 12 seats per cohort." },
-          { "q": "What if I miss a date?", "a": "Every cohort runs on a 90-day cycle. If you miss this one, you roll to the next at no extra cost." }
-        ]
-      },
-      {
-        "heading": "Payments",
-        "items": [
-          { "q": "Are payment plans available?", "a": "Yes \u2014 3 and 6-month plans are available on Phase 1 and Phase 2 at checkout. Phase 3+ is custom." },
-          { "q": "Can my company pay?", "a": "Yes. Choose \"Wire / Invoice\" at checkout and we'll send the company an invoice you can forward." },
-          { "q": "Refunds?", "a": "14-day refund on all programs except live cohorts that have already started." }
-        ]
-      }
-    ],
-    "stillHeading": "Still wondering?",
-    "stillBody": "Email <a href=\"mailto:hello@trueinfluencemethod.com\">hello@trueinfluencemethod.com</a> \u2014 Joanna reads every one."
-  },
-  "community": {
-    "eyebrow": "Community",
-    "title": "Monthly <span class=\"u\">gatherings.</span>",
-    "body": "A free monthly room \u2014 alumni, current cohorts, and a few new faces. Live with Joanna, ~90 minutes, the third Thursday of every month.",
-    "ctaLabel": "Join the Vault (free June 5)",
-    "image": "",
-    "ctaRoute": "product"
-  },
-  "corporate": {
-    "eyebrow": "Corporate",
-    "title": "For your <span class=\"u\">team.</span>",
-    "body": "The True Influence Method, delivered to leadership teams of 6\u201324. Custom curriculum, two-day intensive plus four follow-up sessions.",
-    "ctaLabel": "Talk to Joanna",
-    "image": "",
-    "ctaRoute": "legacy"
-  }
+            {
+                "name": "Maya",
+                "role": "Founder · Tech",
+                "quote": "Booked 3 keynotes 6 weeks after.",
+                "body": "I came in unsure of my voice. I left with a message I could repeat — and three booked stages within six weeks.",
+                "phase": "Phase 2",
+                "image": ""
+            },
+            {
+                "name": "Renée",
+                "role": "VP · Media",
+                "quote": "Got the board to listen, finally.",
+                "body": "Twenty years of context-setting in meetings. Joanna helped me cut to the moment. The board moved on the next pitch.",
+                "phase": "Phase 2",
+                "image": ""
+            },
+            {
+                "name": "Jules",
+                "role": "Coach",
+                "quote": "First paid talk happened here.",
+                "body": "I had been doing free stages for two years. After Phase 1 I priced my talk — and somebody paid it the first time I sent it out.",
+                "phase": "Phase 1",
+                "image": ""
+            },
+            {
+                "name": "Devi",
+                "role": "Producer",
+                "quote": "Paid for itself in one introduction.",
+                "body": "Sat next to a network exec at the retreat. Two months later, my show was greenlit. None of that happens without the message I built that week.",
+                "phase": "Phase 1",
+                "image": ""
+            },
+            {
+                "name": "Aiyana",
+                "role": "Founder · Wellness",
+                "quote": "Reset my whole next decade.",
+                "body": "I had been telling the same origin story for ten years. Joanna found the one underneath it. I rebuilt the whole brand around what I actually do differently.",
+                "phase": "Phase 3",
+                "image": ""
+            },
+            {
+                "name": "Sara",
+                "role": "Exec",
+                "quote": "The clearest yes I have ever given myself.",
+                "body": "The first time I felt my own voice in a room — instead of an executive translation of myself — was at this retreat.",
+                "phase": "Phase 1",
+                "image": ""
+            }
+        ],
+        "closerTitle": "Your story is next.",
+        "closerCta": "Choose where you are →"
+    },
+    "faq": {
+        "eyebrow": "FAQ",
+        "title": "Real <span class=\"u\">questions.</span>",
+        "sections": [
+            {
+                "heading": "Getting started",
+                "items": [
+                    {
+                        "q": "Where do I begin?",
+                        "a": "If you're new, start with the free Vault session (June 5) or the $29 Dollar Message. If you already know your phase, go straight to the path that fits — Speaker, Authority, or Legacy.",
+                        "defaultOpen": true
+                    },
+                    {
+                        "q": "Do I have to apply?",
+                        "a": "No application for Speaker (Phase 1) or Authority (Phase 2/3). The Legacy path is a private conversation first — you submit a request and Joanna reaches out within 48 hours.",
+                        "defaultOpen": false
+                    },
+                    {
+                        "q": "What if I'm between phases?",
+                        "a": "Take the 5-minute assessment or come to the Vault — Joanna can place you in real time.",
+                        "defaultOpen": false
+                    }
+                ]
+            },
+            {
+                "heading": "Tell Your Story (Phase 1)",
+                "items": [
+                    {
+                        "q": "Is the retreat included?",
+                        "a": "Yes. The in-person retreat is included in the $3,200 program price. Travel and lodging are separate.",
+                        "defaultOpen": false
+                    },
+                    {
+                        "q": "When is the next retreat?",
+                        "a": "The next retreat dates are posted on the program page — limited to 12 seats per cohort.",
+                        "defaultOpen": false
+                    },
+                    {
+                        "q": "What if I miss a date?",
+                        "a": "Every cohort runs on a 90-day cycle. If you miss this one, you roll to the next at no extra cost.",
+                        "defaultOpen": false
+                    }
+                ]
+            },
+            {
+                "heading": "Payments",
+                "items": [
+                    {
+                        "q": "Are payment plans available?",
+                        "a": "Yes — 3 and 6-month plans are available on Phase 1 and Phase 2 at checkout. Phase 3+ is custom.",
+                        "defaultOpen": false
+                    },
+                    {
+                        "q": "Can my company pay?",
+                        "a": "Yes. Choose \"Wire / Invoice\" at checkout and we'll send the company an invoice you can forward.",
+                        "defaultOpen": false
+                    },
+                    {
+                        "q": "Refunds?",
+                        "a": "14-day refund on all programs except live cohorts that have already started.",
+                        "defaultOpen": false
+                    }
+                ]
+            }
+        ],
+        "stillHeading": "Still wondering?",
+        "stillBody": "Email <a href=\"mailto:hello@trueinfluencemethod.com\">hello@trueinfluencemethod.com</a> — Joanna reads every one."
+    },
+    "community": {
+        "eyebrow": "Community",
+        "title": "Monthly <span class=\"u\">gatherings.</span>",
+        "body": "A free monthly room — alumni, current cohorts, and a few new faces. Live with Joanna, ~90 minutes, the third Thursday of every month.",
+        "image": "uploads/img2_1778769426.webp",
+        "ctaLabel": "",
+        "ctaRoute": "product"
+    },
+    "corporate": {
+        "eyebrow": "Corporate",
+        "title": "For your <span class=\"u\">team.</span>",
+        "body": "The True Influence Method, delivered to leadership teams of 6–24. Custom curriculum, two-day intensive plus four follow-up sessions.",
+        "image": "uploads/img6_1778769132.webp",
+        "ctaLabel": "",
+        "ctaRoute": "legacy"
+    }
 }

@@ -1,158 +1,157 @@
 {
-  "dollar-message": {
-    "id": "dollar-message",
-    "name": "Your Dollar Message",
-    "tagline": "A $29 mini-training to find the one sentence that sells you.",
-    "price": 29,
-    "currency": "$",
-    "bullets": [
-      "60-minute self-paced training",
-      "The \"Dollar Message\" worksheet",
-      "Joanna's 3-question clarity prompt",
-      "Lifetime access"
-    ],
-    "cta": "Get it for $29",
-    "kind": "lead-magnet"
-  },
-  "vault": {
-    "id": "vault",
-    "name": "The Vault",
-    "tagline": "A free live session with Joanna — June 5.",
-    "price": 0,
-    "currency": "FREE",
-    "bullets": [
-      "Live with Joanna · June 5",
-      "Get a feel for the work",
-      "Q&A — bring your message",
-      "Replay sent to attendees"
-    ],
-    "cta": "Save my seat — free",
-    "kind": "free"
-  },
-  "breakthrough": {
-    "id": "breakthrough",
-    "name": "A Breakthrough Session",
-    "tagline": "One session with Joanna to see clearly.",
-    "price": 2000,
-    "bullets": [
-      "A single private session",
-      "You bring what you've been trying to say",
-      "We find what's actually true underneath it",
-      "You leave with: clear direction, a sharper message, the next step"
-    ],
-    "cta": "Book",
-    "kind": "private"
-  },
-  "four-session": {
-    "id": "four-session",
-    "name": "4-Session Training Package",
-    "tagline": "For leaders ready to build this with consistency.",
-    "price": 8000,
-    "bullets": [
-      "Four private sessions with Joanna",
-      "Uncover your defining moment",
-      "Clarify your message — your deeper why",
-      "Build your first leadership message + differentiator"
-    ],
-    "cta": "Book",
-    "kind": "private"
-  },
-  "phase-1": {
-    "id": "phase-1",
-    "phase": "PHASE 1",
-    "name": "Tell Your Story — My Why",
-    "tagline": "The 90-day Mastermind. Includes the retreat.",
-    "price": 3200,
-    "value": 12000,
-    "bullets": [
-      "Your defining moment (written + spoken)",
-      "Your deeper why",
-      "Your first leadership message",
-      "Your unique differentiator",
-      "Live 3\u20135 minute story share at the retreat",
-      "Peer feedback and refinement"
-    ],
-    "leaveWith": "\"I know what defines me and why it matters.\"",
-    "cta": "Join the program",
-    "icp": "speaker",
-    "kind": "program"
-  },
-  "phase-2": {
-    "id": "phase-2",
-    "phase": "PHASE 2",
-    "name": "Move the Room — My Signature Talk",
-    "tagline": "Your story becomes a structured talk that moves people.",
-    "price": 12000,
-    "value": 20000,
-    "bullets": [
-      "A 7-minute signature talk",
-      "A clear problem \u2192 solution message",
-      "Emotional connection points + defined CTA",
-      "Live coaching with Joanna",
-      "Retreat speaking opportunity (featured)",
-      "Professional video + photos \u00b7 social content"
-    ],
-    "leaveWith": "\"I can clearly communicate a message that lands.\"",
-    "cta": "Take the stage",
-    "icp": "authority",
-    "kind": "program"
-  },
-  "phase-3": {
-    "id": "phase-3",
-    "phase": "PHASE 3",
-    "name": "Master My Message — Keynote or TEDx",
-    "tagline": "This is where you become known.",
-    "price": 25000,
-    "value": 40000,
-    "bullets": [
-      "A refined, repeatable signature message",
-      "Your thought-leader perspective",
-      "Your \"special sauce\" (what you do differently)",
-      "A one-liner people can repeat",
-      "Speaker cohort training + private sessions",
-      "Full speaking reel + 1-minute social clip"
-    ],
-    "leaveWith": "\"I am known for something specific and valuable.\"",
-    "cta": "Create my keynote",
-    "icp": "authority",
-    "kind": "program"
-  },
-  "phase-4": {
-    "id": "phase-4",
-    "phase": "PHASE 4",
-    "name": "Build My Team — My Scaling Strategy",
-    "tagline": "Your message becomes a system.",
-    "price": 250000,
-    "priceLabel": "Starts at $250,000",
-    "bullets": [
-      "Your leadership framework",
-      "A team communication system",
-      "A mentorship structure based on your message",
-      "Psychological safety + trust inside your team",
-      "A business strategy to scale"
-    ],
-    "leaveWith": "\"I build leaders, not just results.\"",
-    "cta": "Scale my business",
-    "icp": "legacy",
-    "kind": "program"
-  },
-  "phase-5": {
-    "id": "phase-5",
-    "phase": "PHASE 5",
-    "name": "Be Remembered — My Legacy Framework",
-    "tagline": "Your work outlives you.",
-    "price": 1000000,
-    "priceLabel": "Starts at $1M",
-    "bullets": [
-      "Your legacy blueprint",
-      "Your impact thesis",
-      "Your succession plan",
-      "Voice + wealth + long-term contribution, aligned",
-      "A body of work that defines your legacy"
-    ],
-    "leaveWith": "\"My life's work carries beyond me.\"",
-    "cta": "Craft my legacy",
-    "icp": "legacy",
-    "kind": "program"
-  }
+    "dollar-message": {
+        "id": "dollar-message",
+        "name": "Your Dollar Message",
+        "tagline": "A $29 mini-training to find the one sentence that sells you.",
+        "price": 29,
+        "bullets": [
+            "60-minute self-paced training\r",
+            "The \"Dollar Message\" worksheet\r",
+            "Joanna's 3-question clarity prompt\r",
+            "Lifetime access"
+        ],
+        "cta": "Get it for $29",
+        "kind": "lead-magnet"
+    },
+    "vault": {
+        "id": "vault",
+        "name": "The Vault",
+        "tagline": "A free live session with Joanna — June 5.",
+        "price": 0,
+        "bullets": [
+            "Live with Joanna · June 5\r",
+            "Get a feel for the work\r",
+            "Q&A — bring your message\r",
+            "Replay sent to attendees"
+        ],
+        "cta": "Save my seat — free",
+        "kind": "free",
+        "currency": "FREE"
+    },
+    "breakthrough": {
+        "id": "breakthrough",
+        "name": "A Breakthrough Session",
+        "tagline": "One session with Joanna to see clearly.",
+        "price": 2000,
+        "bullets": [
+            "A single private session\r",
+            "You bring what you've been trying to say\r",
+            "We find what's actually true underneath it\r",
+            "You leave with: clear direction, a sharper message, the next step"
+        ],
+        "cta": "Book",
+        "kind": "private"
+    },
+    "four-session": {
+        "id": "four-session",
+        "name": "4-Session Training Package",
+        "tagline": "For leaders ready to build this with consistency.",
+        "price": 8000,
+        "bullets": [
+            "Four private sessions with Joanna\r",
+            "Uncover your defining moment\r",
+            "Clarify your message — your deeper why\r",
+            "Build your first leadership message + differentiator"
+        ],
+        "cta": "Book",
+        "kind": "private"
+    },
+    "phase-1": {
+        "id": "phase-1",
+        "name": "Tell Your Story — My Why",
+        "tagline": "The 90-day Mastermind. Includes the retreat.",
+        "price": 3200,
+        "bullets": [
+            "Your defining moment (written + spoken)\r",
+            "Your deeper why\r",
+            "Your first leadership message\r",
+            "Your unique differentiator\r",
+            "Live 3–5 minute story share at the retreat\r",
+            "Peer feedback and refinement"
+        ],
+        "cta": "Join the program",
+        "kind": "program",
+        "value": 12000,
+        "phase": "PHASE 1",
+        "leaveWith": "\"I know what defines me and why it matters.\"",
+        "icp": "speaker"
+    },
+    "phase-2": {
+        "id": "phase-2",
+        "name": "Move the Room — My Signature Talk",
+        "tagline": "Your story becomes a structured talk that moves people.",
+        "price": 12000,
+        "bullets": [
+            "A 7-minute signature talk\r",
+            "A clear problem → solution message\r",
+            "Emotional connection points + defined CTA\r",
+            "Live coaching with Joanna\r",
+            "Retreat speaking opportunity (featured)\r",
+            "Professional video + photos · social content"
+        ],
+        "cta": "Take the stage",
+        "kind": "program",
+        "value": 20000,
+        "phase": "PHASE 2",
+        "leaveWith": "\"I can clearly communicate a message that lands.\"",
+        "icp": "authority"
+    },
+    "phase-3": {
+        "id": "phase-3",
+        "name": "Master My Message — Keynote or TEDx",
+        "tagline": "This is where you become known.",
+        "price": 25000,
+        "bullets": [
+            "A refined, repeatable signature message\r",
+            "Your thought-leader perspective\r",
+            "Your \"special sauce\" (what you do differently)\r",
+            "A one-liner people can repeat\r",
+            "Speaker cohort training + private sessions\r",
+            "Full speaking reel + 1-minute social clip"
+        ],
+        "cta": "Create my keynote",
+        "kind": "program",
+        "value": 40000,
+        "phase": "PHASE 3",
+        "leaveWith": "\"I am known for something specific and valuable.\"",
+        "icp": "authority"
+    },
+    "phase-4": {
+        "id": "phase-4",
+        "name": "Build My Team — My Scaling Strategy",
+        "tagline": "Your message becomes a system.",
+        "price": 250000,
+        "bullets": [
+            "Your leadership framework\r",
+            "A team communication system\r",
+            "A mentorship structure based on your message\r",
+            "Psychological safety + trust inside your team\r",
+            "A business strategy to scale"
+        ],
+        "cta": "Scale my business",
+        "kind": "program",
+        "phase": "PHASE 4",
+        "leaveWith": "\"I build leaders, not just results.\"",
+        "icp": "legacy",
+        "priceLabel": "Starts at $250,000"
+    },
+    "phase-5": {
+        "id": "phase-5",
+        "name": "Be Remembered — My Legacy Framework",
+        "tagline": "Your work outlives you.",
+        "price": 1000000,
+        "bullets": [
+            "Your legacy blueprint\r",
+            "Your impact thesis\r",
+            "Your succession plan\r",
+            "Voice + wealth + long-term contribution, aligned\r",
+            "A body of work that defines your legacy"
+        ],
+        "cta": "Craft my legacy",
+        "kind": "program",
+        "phase": "PHASE 5",
+        "leaveWith": "\"My life's work carries beyond me.\"",
+        "icp": "legacy",
+        "priceLabel": "Starts at $1M"
+    }
 }
