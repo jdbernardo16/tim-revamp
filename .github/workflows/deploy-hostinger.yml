@@ -1,0 +1,58 @@
+name: Deploy to Hostinger
+
+on:
+    push:
+        branches:
+            - dev
+    workflow_dispatch:
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Deploy to Hostinger via FTP
+              uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+              with:
+                  server: ${{ secrets.FTP_HOST }}
+                  username: ${{ secrets.FTP_USER }}
+                  password: ${{ secrets.FTP_PASSWORD }}
+                  port: ${{ secrets.FTP_PORT }}
+                  server-dir: ${{ secrets.FTP_REMOTE_DIR }}
+                  exclude: |
+                      **/.git*
+                      **/.github*
+                      **/.vscode*
+                      **/.DS_Store
+                      **/test.html
+                      **/project-docs.md
+                      **/design-canvas.jsx
+                      **/home.jsx
+                      **/icp.jsx
+                      **/products.jsx
+                      **/shell.jsx
+                      **/supporting.jsx
+                      **/tweaks-panel.jsx
+                      **/wireframes.jsx
+                      **/content-loader.js
+
+            - name: Deployment summary
+              if: success()
+              run: |
+                  echo "## Deployment Summary" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Branch**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Author**: ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Server**: ${{ secrets.FTP_HOST }}" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Status**: Successfully deployed" >> $GITHUB_STEP_SUMMARY
+
+            - name: Notify on failure
+              if: failure()
+              run: |
+                  echo "## Deployment Failed" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "Check the logs above for details." >> $GITHUB_STEP_SUMMARY
