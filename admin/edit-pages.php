@@ -8,8 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $d = $_POST;
   $data = loadJson('pages.json');
 
-  // About
-  $data['about'] = [
+  // About — merge with existing to preserve fields not in form
+  $aboutExisting = $data['about'] ?? [];
+  $data['about'] = array_merge($aboutExisting, [
     'image' => strip_tags($d['about_image']),
     'eyebrow' => strip_tags($d['about_eyebrow']),
     'title' => $d['about_title'],
@@ -19,12 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     'quoteBy' => strip_tags($d['about_quoteBy']),
     'journeyEyebrow' => strip_tags($d['about_journeyEyebrow']),
     'timeline' => [],
-    'closerTitle' => strip_tags($d['about_closerTitle']),
-    'closerCtaPrimary' => strip_tags($d['about_closerCtaPrimary']),
-    'closerCtaSecondary' => strip_tags($d['about_closerCtaSecondary']),
-    'closerCtaSecondaryRoute' => 'product',
-    'closerCtaSecondaryParams' => ['id' => 'vault'],
-  ];
+    'closerTitle' => strip_tags($d['about_closerTitle'] ?? $aboutExisting['closerTitle'] ?? ''),
+    'closerCtaPrimary' => strip_tags($d['about_closerCtaPrimary'] ?? $aboutExisting['closerCtaPrimary'] ?? ''),
+    'closerCtaSecondary' => strip_tags($d['about_closerCtaSecondary'] ?? $aboutExisting['closerCtaSecondary'] ?? ''),
+    'closerCtaSecondaryRoute' => $aboutExisting['closerCtaSecondaryRoute'] ?? 'product',
+    'closerCtaSecondaryParams' => $aboutExisting['closerCtaSecondaryParams'] ?? ['id' => 'vault'],
+  ]);
   foreach (explode("\n", $d['about_timeline']) as $line) {
     $parts = array_map('trim', explode('|', $line, 2));
     if (count($parts) === 2) {
@@ -32,20 +33,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
   }
 
-  // Journey
-  $data['journey'] = [
+  // Journey — merge with existing to preserve fields not in form
+  $journeyExisting = $data['journey'] ?? [];
+  $data['journey'] = array_merge($journeyExisting, [
     'eyebrow' => strip_tags($d['journey_eyebrow']),
     'title' => $d['journey_title'],
     'lead' => $d['journey_lead'],
     'chapters' => [],
     'closerQuote' => $d['journey_closerQuote'],
     'closerQuoteBy' => strip_tags($d['journey_closerQuoteBy']),
-    'closerTitle' => strip_tags($d['journey_closerTitle']),
-    'closerCtaPrimary' => strip_tags($d['journey_closerCtaPrimary']),
-    'closerCtaSecondary' => strip_tags($d['journey_closerCtaSecondary']),
-    'closerCtaSecondaryRoute' => 'product',
-    'closerCtaSecondaryParams' => ['id' => 'vault'],
-  ];
+    'closerTitle' => strip_tags($d['journey_closerTitle'] ?? $journeyExisting['closerTitle'] ?? ''),
+    'closerCtaPrimary' => strip_tags($d['journey_closerCtaPrimary'] ?? $journeyExisting['closerCtaPrimary'] ?? ''),
+    'closerCtaSecondary' => strip_tags($d['journey_closerCtaSecondary'] ?? $journeyExisting['closerCtaSecondary'] ?? ''),
+    'closerCtaSecondaryRoute' => $journeyExisting['closerCtaSecondaryRoute'] ?? 'product',
+    'closerCtaSecondaryParams' => $journeyExisting['closerCtaSecondaryParams'] ?? ['id' => 'vault'],
+  ]);
   foreach (explode("\n", $d['journey_chapters']) as $line) {
     $parts = array_map('trim', explode('|', $line, 2));
     if (count($parts) === 2) {
@@ -161,6 +163,7 @@ if ($msg) echo "<div class=\"msg\">$msg</div>";
     <div class="field"><label>Closer title</label><input name="about_closerTitle" value="<?= htmlspecialchars($data['about']['closerTitle'] ?? '') ?>"></div>
     <div class="field"><label>Closer CTA primary</label><input name="about_closerCtaPrimary" value="<?= htmlspecialchars($data['about']['closerCtaPrimary'] ?? '') ?>"></div>
   </div>
+  <div class="field"><label>Closer CTA secondary ("Meet me first — free June 5")</label><input name="about_closerCtaSecondary" value="<?= htmlspecialchars($data['about']['closerCtaSecondary'] ?? '') ?>"></div>
 
   <div class="section-h">The Journey</div>
   <div class="row">
@@ -181,6 +184,7 @@ if ($msg) echo "<div class=\"msg\">$msg</div>";
     <div class="field"><label>Closer title</label><input name="journey_closerTitle" value="<?= htmlspecialchars($data['journey']['closerTitle'] ?? '') ?>"></div>
     <div class="field"><label>Closer CTA primary</label><input name="journey_closerCtaPrimary" value="<?= htmlspecialchars($data['journey']['closerCtaPrimary'] ?? '') ?>"></div>
   </div>
+  <div class="field"><label>Closer CTA secondary ("Meet me first · free June 5")</label><input name="journey_closerCtaSecondary" value="<?= htmlspecialchars($data['journey']['closerCtaSecondary'] ?? '') ?>"></div>
 
   <div class="section-h">Success Stories</div>
   <div class="row">

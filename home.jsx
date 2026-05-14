@@ -85,6 +85,7 @@ const HomePage = () => {
                         muted
                         loop
                         playsInline
+                        poster="assets/img1.webp"
                     >
                         <source src={HOME.brandHeroVideo} type="video/mp4" />
                     </video>
@@ -136,8 +137,14 @@ const HomePage = () => {
             {/* ── Partners / Trusted By Marquee ── */}
             {(HOME.logos || []).length > 0 && (
                 <section className="partners-section">
-                    <div className="partners-container" style={{ paddingTop: 0 }}>
-                        <div className="partners-gold-divider partners-divider-ink" style={{ marginBottom: 48 }} />
+                    <div
+                        className="partners-container"
+                        style={{ paddingTop: 0 }}
+                    >
+                        <div
+                            className="partners-gold-divider partners-divider-ink"
+                            style={{ marginBottom: 48 }}
+                        />
                         <div className="partners-heading">
                             <span className="partners-pill-ink">
                                 <span className="partners-pill-dot-ink" />
@@ -153,14 +160,24 @@ const HomePage = () => {
                                 : []
                             ).map((logo, i) => (
                                 <div key={i} className="partner-logo">
-                                    <img src={logo.src || ""} alt={logo.alt || ""} draggable="false" />
+                                    <img
+                                        src={logo.src || ""}
+                                        alt={logo.alt || ""}
+                                        draggable="false"
+                                    />
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    <div className="partners-container" style={{ paddingBottom: 0 }}>
-                        <div className="partners-gold-divider partners-divider-ink" style={{ marginTop: 48 }} />
+                    <div
+                        className="partners-container"
+                        style={{ paddingBottom: 0 }}
+                    >
+                        <div
+                            className="partners-gold-divider partners-divider-ink"
+                            style={{ marginTop: 48 }}
+                        />
                     </div>
                 </section>
             )}
@@ -352,7 +369,10 @@ const HomePage = () => {
                         {HOME.testimonialsEyebrow}
                     </Eyebrow>
                     <div className="testi-grid">
-                        {(Array.isArray(HOME.testimonials) ? HOME.testimonials : []).map((t, i) => (
+                        {(Array.isArray(HOME.testimonials)
+                            ? HOME.testimonials
+                            : []
+                        ).map((t, i) => (
                             <figure key={i} className="testi">
                                 <span className="testi-mark">"</span>
                                 <blockquote>{t.quote}</blockquote>
