@@ -92,30 +92,38 @@ const HomePage = () => {
                 )}
                 <div className="brand-hero-overlay" />
                 <div className="brand-hero-content">
-                    <div className="brand-hero-title-wrap">
-                        <span className="brand-hero-line" />
-                        <h1 className="brand-hero-title">
-                            {HOME.brandHeroHeading}
-                        </h1>
-                        <span className="brand-hero-line" />
-                    </div>
-                    <p
-                        className="lead"
-                        style={{ margin: "28px auto", maxWidth: "640px" }}
-                    >
-                        {HOME.brandHeroBody}
-                    </p>
-                    <div className="cta-row centered">
-                        <Button primary size="lg" onClick={() => goTo("start")}>
-                            {HOME.heroCtaPrimary}
-                        </Button>
-                        <Button
-                            ghost
-                            size="lg"
-                            onClick={() => goTo("product", { id: "vault" })}
-                        >
-                            {HOME.heroCtaSecondary}
-                        </Button>
+                    <div className="hero-copy">
+                        <Eyebrow>{HOME.heroEyebrow}</Eyebrow>
+                        <h1
+                            className="display"
+                            dangerouslySetInnerHTML={html(HOME.heroTitle)}
+                        />
+                        <p
+                            className="lead"
+                            dangerouslySetInnerHTML={html(HOME.heroBody)}
+                        />
+                        <div className="cta-row centered">
+                            <Button
+                                primary
+                                size="lg"
+                                onClick={() => goTo("start")}
+                            >
+                                {HOME.heroCtaPrimary}
+                            </Button>
+                            <Button
+                                ghost
+                                size="lg"
+                                onClick={() => goTo("product", { id: "vault" })}
+                            >
+                                {HOME.heroCtaSecondary}
+                            </Button>
+                        </div>
+                        <div className="hero-meta">
+                            <span>{HOME.heroStars}</span>
+                            <span>{HOME.heroMeta1}</span>
+                            <span>·</span>
+                            <span>{HOME.heroMeta2}</span>
+                        </div>
                     </div>
                 </div>
                 <div className="scroll-indicator">

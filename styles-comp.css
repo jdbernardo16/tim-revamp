@@ -29,6 +29,7 @@
     padding-top: 20px;
     border-top: 1px solid var(--rule);
     font-size: 13px;
+    justify-content: center;
     color: var(--ink-soft);
 }
 .hero-meta span:first-child {
